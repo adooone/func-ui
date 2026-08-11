@@ -1,6 +1,6 @@
 import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig, type PluginOption } from 'vite';
+import { type PluginOption, defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { sharedCssConfig } from './vite.shared';
 

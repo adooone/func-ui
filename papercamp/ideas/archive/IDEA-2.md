@@ -2,8 +2,9 @@
 id: IDEA-2
 title: Tier 2 — form controls and overlays
 type: feat
-status: review
+status: done
 created: 2026-08-04
+updated: 2026-08-08
 tags:
   - components
   - release

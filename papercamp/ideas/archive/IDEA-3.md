@@ -2,9 +2,9 @@
 id: IDEA-3
 title: Tier 3 gap-filler components
 type: feat
-status: review
+status: done
 created: 2026-08-04
-updated: 2026-08-07
+updated: 2026-08-08
 tags:
   - components
   - release

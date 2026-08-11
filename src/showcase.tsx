@@ -3,18 +3,53 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { type CSSProperties, type ReactNode, type Ref, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
+  Alert,
   Backdrop,
+  Breadcrumb,
   Button,
   Card,
+  Checkbox,
+  Chip,
+  CodeBlock,
+  CopyButton,
+  Divider,
+  Drawer,
+  EmptyState,
+  FileButton,
   Glass,
+  Icon,
   IconButton,
+  InlineCode,
+  Input,
+  Kbd,
+  LinkButton,
+  ListItem,
+  Menu,
+  Modal,
+  Progress,
+  SegmentedControl,
+  Select,
+  Skeleton,
+  Spinner,
   Stamp,
+  StatusDot,
+  Switch,
+  Textarea,
   ToastProvider,
   Tooltip,
   cn,
   useToast,
 } from './index';
-import type { StampVariant, TooltipPlacement } from './index';
+import type {
+  AlertVariant,
+  DrawerSide,
+  EmptyStateStatus,
+  IconName,
+  SelectOption,
+  StampVariant,
+  StatusDotVariant,
+  TooltipPlacement,
+} from './index';
 
 const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
 
@@ -33,6 +68,41 @@ const funkLines = [
   { quote: 'Dance to the music', src: 'sly & the family stone · 1968' },
   { quote: 'Get down on it', src: 'kool & the gang · 1981' },
 ];
+const iconNames: IconName[] = [
+  'close',
+  'check',
+  'copy',
+  'plus',
+  'folder',
+  'lightbulb',
+  'chevron-up',
+  'chevron-down',
+  'chevron-left',
+  'chevron-right',
+  'play',
+  'flag',
+  'sort-asc',
+  'sort-desc',
+  'refresh',
+  'more',
+  'wand',
+  'merge',
+  'push',
+  'pull',
+  'shuffle',
+  'commit',
+  'github',
+  'note',
+];
+
+const selectOptions: SelectOption[] = [
+  { value: 'funk', label: 'Funk' },
+  { value: 'soul', label: 'Soul' },
+  { value: 'disco', label: 'Disco' },
+  { value: 'boogie', label: 'Boogie (out of stock)', disabled: true },
+  { value: 'groove', label: 'Groove' },
+];
+
 type Section = (typeof sections)[number];
 
 function Control<T extends string>({
@@ -199,6 +269,47 @@ function Showcase() {
   const [cardClicks, setCardClicks] = useState(0);
 
   const [tipPlacement, setTipPlacement] = useState<TooltipPlacement>('top');
+
+  const [fieldSize, setFieldSize] = useState<'sm' | 'md'>('md');
+  const [fieldError, setFieldError] = useState(false);
+
+  const [selectValue, setSelectValue] = useState('');
+
+  const [checked, setChecked] = useState(true);
+  const [switchOn, setSwitchOn] = useState(true);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalSize, setModalSize] = useState<'sm' | 'md' | 'lg'>('md');
+
+  const [activeItem, setActiveItem] = useState('inbox');
+
+  const [alertVariant, setAlertVariant] = useState<AlertVariant>('info');
+  const [alertShown, setAlertShown] = useState(true);
+
+  const [dividerOrientation, setDividerOrientation] = useState<'horizontal' | 'vertical'>(
+    'horizontal',
+  );
+
+  const [spinnerSize, setSpinnerSize] = useState<'sm' | 'md' | 'lg'>('md');
+  const [progressValue, setProgressValue] = useState(60);
+  const [skeletonVariant, setSkeletonVariant] = useState<'text' | 'rect' | 'circle'>('text');
+
+  const [linkColor, setLinkColor] = useState<'inherit' | 'accent'>('accent');
+  const [linkSize, setLinkSize] = useState<'sm' | 'md' | 'lg'>('md');
+
+  const [emptyStatus, setEmptyStatus] = useState<EmptyStateStatus>('empty');
+
+  const [dotVariant, setDotVariant] = useState<StatusDotVariant>('success');
+  const [dotPulse, setDotPulse] = useState(false);
+
+  const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
+
+  const [segValue, setSegValue] = useState('list');
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerSide, setDrawerSide] = useState<DrawerSide>('right');
+
+  const [fileName, setFileName] = useState<string | null>(null);
 
   // A different line every visit, like the lamp.
   const [funkLine] = useState(() => funkLines[Math.floor(Math.random() * funkLines.length)]);
@@ -553,6 +664,566 @@ function Showcase() {
                     description="ToastProvider + useToast. Semantic variants ride the status tokens; duration 0 keeps a toast until dismissed."
                   >
                     <ToastDemo />
+                  </Entry>
+
+                  <Entry
+                    name="Input"
+                    description="A labelled text field with helper text and an error state that wires up aria-invalid and the described-by message."
+                  >
+                    <div className="max-w-xs">
+                      <Input
+                        label="Band name"
+                        placeholder="e.g. Parliament"
+                        size={fieldSize}
+                        helperText="As it appears on the sleeve."
+                        error={fieldError ? 'This name is already taken.' : undefined}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="size"
+                        options={['sm', 'md'] as const}
+                        value={fieldSize}
+                        onChange={setFieldSize}
+                      />
+                      <Control
+                        label="error"
+                        options={['false', 'true'] as const}
+                        value={fieldError ? 'true' : 'false'}
+                        onChange={(v) => setFieldError(v === 'true')}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Textarea"
+                    description="The multi-line counterpart to Input — same label/helper/error scaffolding, sharing the size and error controls above."
+                  >
+                    <div className="max-w-xs">
+                      <Textarea
+                        label="Liner notes"
+                        rows={3}
+                        placeholder="Tell the story behind the record…"
+                        size={fieldSize}
+                        helperText="Markdown is not supported."
+                        error={fieldError ? 'Liner notes are required.' : undefined}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Select"
+                    description="A custom listbox over a hidden native select — controlled by value, keyboard-navigable (arrows, Home/End, type-to-open), and form-submittable."
+                  >
+                    <div className="max-w-xs">
+                      <Select
+                        label="Genre"
+                        options={selectOptions}
+                        value={selectValue}
+                        onChange={setSelectValue}
+                        size={fieldSize}
+                        helperText="Disabled options are skipped by the keyboard."
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Checkbox"
+                    description="A themed checkbox with label, helper text, and error state — a real native input under a re-skinned box."
+                  >
+                    <Checkbox
+                      label="Ship with the deluxe gatefold"
+                      checked={checked}
+                      onChange={(e) => setChecked(e.target.checked)}
+                      size={fieldSize}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Switch"
+                    description="A toggle for instant on/off settings, built on the same native-input foundation as Checkbox."
+                  >
+                    <Switch
+                      label="Autoplay the next track"
+                      checked={switchOn}
+                      onChange={(e) => setSwitchOn(e.target.checked)}
+                      size={fieldSize}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Modal"
+                    description="A portal dialog with focus trap, scroll lock, and Escape-to-close. Compound Modal.Body / Modal.Footer / Modal.Error parts scaffold the common layout."
+                  >
+                    <div className="flex min-h-[60px] items-center">
+                      <Button onClick={() => setModalOpen(true)}>Open modal</Button>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="size"
+                        options={['sm', 'md', 'lg'] as const}
+                        value={modalSize}
+                        onChange={setModalSize}
+                      />
+                    </div>
+                    <Modal
+                      open={modalOpen}
+                      onClose={() => setModalOpen(false)}
+                      title="Confirm pressing"
+                      size={modalSize}
+                    >
+                      <Modal.Body>
+                        <p className="opacity-80">
+                          Tab cycles inside the panel; the backdrop and Escape both close it, and
+                          focus returns to the trigger on exit.
+                        </p>
+                        <Modal.Error>Modal.Error renders as a semantic alert line.</Modal.Error>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="ghost" onClick={() => setModalOpen(false)}>
+                          Cancel
+                        </Button>
+                        <Button onClick={() => setModalOpen(false)}>Confirm</Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </Entry>
+
+                  <Entry
+                    name="ListItem"
+                    description="A button row for nav and menus — icon slot, trailing action slot, and an active state that sets aria-current."
+                  >
+                    <div className="flex max-w-xs flex-col">
+                      {[
+                        { id: 'inbox', label: 'Inbox' },
+                        { id: 'archive', label: 'Archive' },
+                        { id: 'trash', label: 'Trash' },
+                      ].map((item) => (
+                        <ListItem
+                          key={item.id}
+                          icon={<PlusGlyph />}
+                          active={activeItem === item.id}
+                          action={<Stamp variant="info">12</Stamp>}
+                          onClick={() => setActiveItem(item.id)}
+                        >
+                          {item.label}
+                        </ListItem>
+                      ))}
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Alert"
+                    description="A semantic inline message with a variant icon and role, optionally dismissible."
+                  >
+                    <div className="min-h-[60px] max-w-md">
+                      {alertShown ? (
+                        <Alert
+                          variant={alertVariant}
+                          dismissible
+                          onDismiss={() => setAlertShown(false)}
+                        >
+                          A {alertVariant} alert — dismiss it and it comes back below.
+                        </Alert>
+                      ) : (
+                        <Button variant="ghost" size="sm" onClick={() => setAlertShown(true)}>
+                          show alert again
+                        </Button>
+                      )}
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="variant"
+                        options={['info', 'success', 'warning', 'error'] as const}
+                        value={alertVariant}
+                        onChange={(v) => {
+                          setAlertVariant(v);
+                          setAlertShown(true);
+                        }}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Divider"
+                    description="A hairline rule, horizontal or vertical, with an optional centered label for section breaks."
+                  >
+                    <div
+                      className={cn(
+                        'flex',
+                        dividerOrientation === 'vertical' ? 'h-16 items-center gap-4' : 'flex-col',
+                      )}
+                    >
+                      {dividerOrientation === 'horizontal' ? (
+                        <>
+                          <span className="opacity-70">Side A</span>
+                          <Divider label="flip" />
+                          <span className="opacity-70">Side B</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="opacity-70">left</span>
+                          <Divider orientation="vertical" />
+                          <span className="opacity-70">right</span>
+                        </>
+                      )}
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="orientation"
+                        options={['horizontal', 'vertical'] as const}
+                        value={dividerOrientation}
+                        onChange={setDividerOrientation}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Spinner"
+                    description="A spinning ring for in-flight actions, rendered as an accessible output with a label."
+                  >
+                    <div className="flex min-h-[48px] items-center gap-6">
+                      <Spinner size={spinnerSize} />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="size"
+                        options={['sm', 'md', 'lg'] as const}
+                        value={spinnerSize}
+                        onChange={setSpinnerSize}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Progress"
+                    description="A determinate bar on the native progress element, with a tokenised fill colour and adjustable height."
+                  >
+                    <div className="max-w-xs">
+                      <Progress value={progressValue} />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="value"
+                        options={['0', '25', '50', '75', '100'] as const}
+                        value={String(progressValue)}
+                        onChange={(v) => setProgressValue(Number(v))}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Skeleton"
+                    description="A shimmering placeholder that reserves layout while content loads — text lines, rectangles, or circles."
+                  >
+                    <div className="flex min-h-[64px] items-center gap-4">
+                      {skeletonVariant === 'text' && (
+                        <div className="flex w-48 flex-col gap-2">
+                          <Skeleton width="100%" />
+                          <Skeleton width="80%" />
+                          <Skeleton width="60%" />
+                        </div>
+                      )}
+                      {skeletonVariant === 'rect' && (
+                        <Skeleton variant="rect" width={192} height={48} />
+                      )}
+                      {skeletonVariant === 'circle' && (
+                        <Skeleton variant="circle" width={48} height={48} />
+                      )}
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="variant"
+                        options={['text', 'rect', 'circle'] as const}
+                        value={skeletonVariant}
+                        onChange={setSkeletonVariant}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LinkButton"
+                    description="A chrome-less textual action that inherits its colour or takes the accent — with optional leading and trailing icon slots."
+                  >
+                    <div className="flex min-h-[48px] items-center">
+                      <LinkButton
+                        color={linkColor}
+                        size={linkSize}
+                        icon={<Icon name="play" size={16} />}
+                        iconRight={<Icon name="chevron-right" size={16} />}
+                      >
+                        Read the liner notes
+                      </LinkButton>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="color"
+                        options={['inherit', 'accent'] as const}
+                        value={linkColor}
+                        onChange={setLinkColor}
+                      />
+                      <Control
+                        label="size"
+                        options={['sm', 'md', 'lg'] as const}
+                        value={linkSize}
+                        onChange={setLinkSize}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="EmptyState"
+                    description="A centered placeholder for loading, empty, and error states — layout-stable so the surface doesn't jump between them."
+                  >
+                    <div className="max-w-md border border-black/10 p-6 dark:border-white/10">
+                      <EmptyState
+                        status={emptyStatus}
+                        icon={
+                          emptyStatus === 'empty' ? <Icon name="folder" size={32} /> : undefined
+                        }
+                        title={
+                          emptyStatus === 'loading'
+                            ? 'Loading records…'
+                            : emptyStatus === 'error'
+                              ? 'Could not load records'
+                              : 'No records yet'
+                        }
+                        description={
+                          emptyStatus === 'error'
+                            ? 'Something went wrong on our end.'
+                            : emptyStatus === 'empty'
+                              ? 'Add your first record to get started.'
+                              : undefined
+                        }
+                        action={
+                          emptyStatus === 'error' ? (
+                            <Button size="sm" variant="secondary">
+                              Retry
+                            </Button>
+                          ) : emptyStatus === 'empty' ? (
+                            <Button size="sm">Add record</Button>
+                          ) : undefined
+                        }
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="status"
+                        options={['loading', 'empty', 'error'] as const}
+                        value={emptyStatus}
+                        onChange={setEmptyStatus}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="StatusDot"
+                    description="A tiny semantic status indicator on the status tokens, optionally pulsing and given an accessible label."
+                  >
+                    <div className="flex min-h-[48px] items-center gap-4">
+                      <StatusDot variant={dotVariant} pulse={dotPulse} label={dotVariant} />
+                      <StatusDot
+                        variant={dotVariant}
+                        size="md"
+                        pulse={dotPulse}
+                        label={dotVariant}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="variant"
+                        options={['neutral', 'info', 'success', 'warning', 'error'] as const}
+                        value={dotVariant}
+                        onChange={setDotVariant}
+                      />
+                      <Control
+                        label="pulse"
+                        options={['false', 'true'] as const}
+                        value={dotPulse ? 'true' : 'false'}
+                        onChange={(v) => setDotPulse(v === 'true')}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Chip"
+                    description="A toggle for filters and tags — aria-pressed tracks selection, and onToggle reports the next state."
+                  >
+                    <div className="flex flex-wrap gap-2">
+                      {selectOptions
+                        .filter((o) => !o.disabled)
+                        .map((o) => (
+                          <Chip
+                            key={o.value}
+                            selected={chipFilters.includes(o.value)}
+                            icon={<Icon name="check" size={14} />}
+                            onToggle={() =>
+                              setChipFilters((f) =>
+                                f.includes(o.value)
+                                  ? f.filter((x) => x !== o.value)
+                                  : [...f, o.value],
+                              )
+                            }
+                          >
+                            {o.label}
+                          </Chip>
+                        ))}
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="SegmentedControl"
+                    description="A single-select toggle group in a fieldset — one option active at a time, with optional per-option icons."
+                  >
+                    <SegmentedControl
+                      value={segValue}
+                      onChange={setSegValue}
+                      options={[
+                        { value: 'list', label: 'List', icon: <Icon name="note" size={16} /> },
+                        { value: 'grid', label: 'Grid', icon: <Icon name="folder" size={16} /> },
+                        { value: 'flow', label: 'Flow', icon: <Icon name="shuffle" size={16} /> },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Drawer"
+                    description="A portal panel that slides in from any edge — focus trap, scroll lock, and Escape-to-close, with Drawer.Body / Drawer.Footer parts."
+                  >
+                    <div className="flex min-h-[48px] items-center">
+                      <Button variant="secondary" onClick={() => setDrawerOpen(true)}>
+                        Open drawer
+                      </Button>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="side"
+                        options={['left', 'right', 'top', 'bottom'] as const}
+                        value={drawerSide}
+                        onChange={setDrawerSide}
+                      />
+                    </div>
+                    <Drawer
+                      open={drawerOpen}
+                      onClose={() => setDrawerOpen(false)}
+                      side={drawerSide}
+                      title="Filters"
+                    >
+                      <Drawer.Body>
+                        <p className="opacity-80">
+                          Slides in from the {drawerSide} edge. Tab cycles inside; the backdrop and
+                          Escape both close it.
+                        </p>
+                      </Drawer.Body>
+                      <Drawer.Footer>
+                        <Button variant="ghost" onClick={() => setDrawerOpen(false)}>
+                          Cancel
+                        </Button>
+                        <Button onClick={() => setDrawerOpen(false)}>Apply</Button>
+                      </Drawer.Footer>
+                    </Drawer>
+                  </Entry>
+
+                  <Entry
+                    name="Kbd & InlineCode"
+                    description="Inline typographic primitives — Kbd renders keyboard keys, InlineCode marks up code spans within running text."
+                  >
+                    <p className="max-w-md opacity-80">
+                      Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to open the palette, then run{' '}
+                      <InlineCode>pnpm dev</InlineCode> to start the server.
+                    </p>
+                  </Entry>
+
+                  <Entry
+                    name="CodeBlock"
+                    description="A code panel with an optional filename header, one-click copy, and per-line add/remove diff styling."
+                  >
+                    <div className="max-w-md">
+                      <CodeBlock
+                        filename="button.tsx"
+                        lines={[
+                          { content: "import { Button } from '@dendelion/func-ui';" },
+                          { content: '' },
+                          { content: '<Button variant="ghost">Old</Button>', diff: 'remove' },
+                          { content: '<Button variant="primary">New</Button>', diff: 'add' },
+                        ]}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="CopyButton"
+                    description="A self-contained copy action that writes to the clipboard and flips to a confirmed state before resetting."
+                  >
+                    <CopyButton
+                      value="pnpm add @dendelion/func-ui"
+                      icon={<Icon name="copy" size={16} />}
+                      copiedIcon={<Icon name="check" size={16} />}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Breadcrumb"
+                    description="A navigation trail — the last item is marked aria-current, and the separator is customisable."
+                  >
+                    <Breadcrumb
+                      items={[
+                        { label: 'Home', href: '#' },
+                        { label: 'Records', href: '#' },
+                        { label: 'Parliament' },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="Menu"
+                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, and a danger variant."
+                  >
+                    <Menu
+                      trigger={
+                        <span className="inline-flex items-center gap-2">
+                          Actions <Icon name="chevron-down" size={16} />
+                        </span>
+                      }
+                      items={[
+                        { label: 'Rename', icon: <Icon name="wand" size={16} /> },
+                        { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
+                        {
+                          label: 'Refresh',
+                          icon: <Icon name="refresh" size={16} />,
+                          disabled: true,
+                        },
+                        { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
+                      ]}
+                    />
+                  </Entry>
+
+                  <Entry
+                    name="FileButton"
+                    description="A styled file picker — wraps a hidden native input and reports the chosen FileList through onFiles."
+                  >
+                    <div className="flex min-h-[48px] items-center gap-4">
+                      <FileButton
+                        icon={<Icon name="folder" size={16} />}
+                        onFiles={(files) => setFileName(files[0]?.name ?? null)}
+                      >
+                        Choose file
+                      </FileButton>
+                      {fileName && <span className="font-mono text-sm opacity-70">{fileName}</span>}
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Icon"
+                    description="The built-in icon set — one stroke-based SVG per name, sized in pixels and inheriting currentColor."
+                  >
+                    <div className="grid grid-cols-4 gap-4 sm:grid-cols-6">
+                      {iconNames.map((name) => (
+                        <div key={name} className="flex flex-col items-center gap-2 text-center">
+                          <Icon name={name} />
+                          <span className="font-mono text-xs opacity-60">{name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </Entry>
                 </SectionBlock>
 
