@@ -32,5 +32,8 @@
       "effort": "medium"
     }
   },
-  "port": 3041
+  "port": 3041,
+  "commands": {
+    "build": "pnpm --dir node_modules/@dendelion/paper-camp run build:toolbar"
+  }
 }

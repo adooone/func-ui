@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@dendelion/paper-camp": "^0.17.1",
+    "@dendelion/paper-camp": "link:../paper-camp-build",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.7.1",
