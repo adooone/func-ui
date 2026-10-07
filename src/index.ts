@@ -102,6 +102,9 @@ export type {
   SegmentedControlProps,
 } from './components/segmented-control';
 
+export { Tabs } from './components/tabs';
+export type { TabItem, TabsOrientation, TabsProps } from './components/tabs';
+
 export { Kbd } from './components/kbd';
 export type { KbdProps } from './components/kbd';
 

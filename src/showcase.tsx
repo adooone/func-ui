@@ -38,6 +38,7 @@ import {
   Stamp,
   StatusDot,
   Switch,
+  Tabs,
   Textarea,
   ToastProvider,
   Tooltip,
@@ -317,6 +318,7 @@ function Showcase() {
 
   const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
 
+  const [tabsOrientation, setTabsOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
   const [segValue, setSegValue] = useState('list');
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -1188,6 +1190,51 @@ function Showcase() {
                         { value: 'flow', label: 'Flow', icon: <Icon name="shuffle" size={16} /> },
                       ]}
                     />
+                  </Entry>
+
+                  <Entry
+                    name="Tabs"
+                    description="An ARIA tablist with roving focus — arrow keys move between tabs, Home/End jump to the ends, and each tab renders its own panel. Uncontrolled by default, or driven by value/onChange."
+                  >
+                    <Tabs
+                      tablistLabel="Track info"
+                      orientation={tabsOrientation}
+                      defaultValue="credits"
+                      items={[
+                        {
+                          value: 'credits',
+                          label: 'Credits',
+                          icon: <Icon name="note" size={16} />,
+                          content: (
+                            <p className="max-w-md opacity-80">Bass, clavinet, handclaps.</p>
+                          ),
+                        },
+                        {
+                          value: 'pressings',
+                          label: 'Pressings',
+                          icon: <Icon name="folder" size={16} />,
+                          content: (
+                            <p className="max-w-md opacity-80">
+                              First press 1975, reissued on 180g in 2019.
+                            </p>
+                          ),
+                        },
+                        {
+                          value: 'master',
+                          label: 'Master tape',
+                          disabled: true,
+                          content: <p className="max-w-md opacity-80">Vaulted.</p>,
+                        },
+                      ]}
+                    />
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="orientation"
+                        options={['horizontal', 'vertical'] as const}
+                        value={tabsOrientation}
+                        onChange={setTabsOrientation}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry

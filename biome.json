@@ -65,6 +65,16 @@
           }
         }
       }
+    },
+    {
+      "include": ["src/components/tabs/**"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noNoninteractiveTabindex": "off"
+          }
+        }
+      }
     }
   ]
 }

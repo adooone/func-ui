@@ -1,0 +1,115 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.tabs {
+  display: flex;
+  min-width: 0;
+  color: var(--fui-text);
+}
+
+.horizontal {
+  flex-direction: column;
+}
+
+.vertical {
+  flex-direction: row;
+  gap: $space-4;
+}
+
+.tablist {
+  display: flex;
+  min-width: 0;
+}
+
+.horizontal .tablist {
+  flex-flow: row wrap;
+  box-shadow: inset 0 -2px 0 0 color-mix(in srgb, var(--fui-text) 18%, transparent);
+}
+
+.vertical .tablist {
+  flex-direction: column;
+  box-shadow: inset -2px 0 0 0 color-mix(in srgb, var(--fui-text) 18%, transparent);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  border: none;
+  background: none;
+  color: var(--fui-text);
+  font-family: $font-family-mono;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0.7;
+  cursor: pointer;
+  transition:
+    opacity 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover:not(:disabled) {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  @include reduced-motion {
+    transition: none;
+  }
+}
+
+.active {
+  opacity: 1;
+  color: var(--fui-accent);
+}
+
+.horizontal .active {
+  box-shadow: inset 0 -2px 0 0 var(--fui-accent);
+}
+
+.vertical .active {
+  box-shadow: inset -2px 0 0 0 var(--fui-accent);
+}
+
+.vertical .tab {
+  justify-content: flex-start;
+}
+
+.sm .tab {
+  padding: $space-1 $space-3;
+  font-size: 0.6875rem;
+}
+
+.md .tab {
+  padding: $space-2 $space-4;
+  font-size: 0.8125rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.panel {
+  min-width: 0;
+  outline: none;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.horizontal .panel {
+  padding-top: $space-4;
+}
