@@ -4,6 +4,7 @@ title: Radio-parity components
 type: feat
 status: review
 created: 2026-08-04
+updated: 2026-10-07
 tags:
   - components
   - release
@@ -27,3 +28,4 @@ Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player 
       run: 2m53s · 26 in · 9.3k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [x] Audit radio apps' actual mojo-ui prop usage before finalizing each API
       run: 2m42s · 30 in · 9.1k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
+- [x] [manual] Remove local paper-camp link and simplify package.json formatting
