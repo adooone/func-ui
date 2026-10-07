@@ -1328,7 +1328,7 @@ function Showcase() {
 
                   <Entry
                     name="Menu"
-                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, and a danger variant."
+                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, separators between groups, and a danger variant."
                   >
                     <Menu
                       trigger={
@@ -1344,6 +1344,7 @@ function Showcase() {
                           icon: <Icon name="refresh" size={16} />,
                           disabled: true,
                         },
+                        { separator: true },
                         { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
                       ]}
                     />

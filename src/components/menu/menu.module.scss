@@ -82,3 +82,11 @@
   flex-shrink: 0;
   align-items: center;
 }
+
+.separator {
+  box-sizing: border-box;
+  height: 1px;
+  margin: $space-1 0;
+  border: none;
+  background-color: color-mix(in srgb, var(--fui-text) 15%, transparent);
+}

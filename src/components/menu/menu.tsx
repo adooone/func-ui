@@ -10,12 +10,26 @@ export interface MenuItem {
   danger?: boolean;
 }
 
+export interface MenuSeparator {
+  separator: true;
+}
+
+export type MenuEntry = MenuItem | MenuSeparator;
+
 export interface MenuProps {
   trigger: ReactNode;
-  items: MenuItem[];
+  items: MenuEntry[];
   triggerLabel?: string;
   align?: 'start' | 'end';
   className?: string;
+}
+
+function isSeparator(entry: MenuEntry): entry is MenuSeparator {
+  return 'separator' in entry;
+}
+
+function isSelectable(entry: MenuEntry): entry is MenuItem {
+  return !isSeparator(entry) && !entry.disabled;
 }
 
 export function Menu({ trigger, items, triggerLabel, align = 'start', className }: MenuProps) {
@@ -30,17 +44,17 @@ export function Menu({ trigger, items, triggerLabel, align = 'start', className 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const firstEnabled = () => items.findIndex((item) => !item.disabled);
+  const firstEnabled = () => items.findIndex(isSelectable);
   const lastEnabled = () => {
-    for (let i = items.length - 1; i >= 0; i--) if (!items[i].disabled) return i;
+    for (let i = items.length - 1; i >= 0; i--) if (isSelectable(items[i])) return i;
     return -1;
   };
   const nextEnabled = (from: number) => {
-    for (let i = from + 1; i < items.length; i++) if (!items[i].disabled) return i;
+    for (let i = from + 1; i < items.length; i++) if (isSelectable(items[i])) return i;
     return from;
   };
   const prevEnabled = (from: number) => {
-    for (let i = from - 1; i >= 0; i--) if (!items[i].disabled) return i;
+    for (let i = from - 1; i >= 0; i--) if (isSelectable(items[i])) return i;
     return from;
   };
 
@@ -69,7 +83,7 @@ export function Menu({ trigger, items, triggerLabel, align = 'start', className 
 
   const select = (index: number) => {
     const item = items[index];
-    if (!item || item.disabled) return;
+    if (!item || !isSelectable(item)) return;
     item.onSelect?.();
     close();
   };
@@ -149,30 +163,34 @@ export function Menu({ trigger, items, triggerLabel, align = 'start', className 
           className={cn(styles.list, styles[align])}
           onKeyDown={onMenuKeyDown}
         >
-          {items.map((item, index) => (
-            <button
-              key={itemId(index)}
-              type="button"
-              id={itemId(index)}
-              role="menuitem"
-              tabIndex={-1}
-              disabled={item.disabled}
-              className={cn(
-                styles.item,
-                item.danger && styles.danger,
-                index === activeIndex && styles.active,
-              )}
-              onPointerMove={() => !item.disabled && setActiveIndex(index)}
-              onClick={() => select(index)}
-            >
-              {item.icon && (
-                <span className={styles.icon} aria-hidden="true">
-                  {item.icon}
-                </span>
-              )}
-              {item.label}
-            </button>
-          ))}
+          {items.map((item, index) =>
+            isSeparator(item) ? (
+              <hr key={itemId(index)} className={styles.separator} />
+            ) : (
+              <button
+                key={itemId(index)}
+                type="button"
+                id={itemId(index)}
+                role="menuitem"
+                tabIndex={-1}
+                disabled={item.disabled}
+                className={cn(
+                  styles.item,
+                  item.danger && styles.danger,
+                  index === activeIndex && styles.active,
+                )}
+                onPointerMove={() => !item.disabled && setActiveIndex(index)}
+                onClick={() => select(index)}
+              >
+                {item.icon && (
+                  <span className={styles.icon} aria-hidden="true">
+                    {item.icon}
+                  </span>
+                )}
+                {item.label}
+              </button>
+            ),
+          )}
         </div>
       )}
     </div>

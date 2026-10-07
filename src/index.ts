@@ -121,7 +121,7 @@ export { Breadcrumb } from './components/breadcrumb';
 export type { BreadcrumbItem, BreadcrumbProps } from './components/breadcrumb';
 
 export { Menu } from './components/menu';
-export type { MenuItem, MenuProps } from './components/menu';
+export type { MenuEntry, MenuItem, MenuProps, MenuSeparator } from './components/menu';
 
 export { FileButton } from './components/file-button';
 export type { FileButtonProps } from './components/file-button';
