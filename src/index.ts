@@ -78,6 +78,9 @@ export type { ProgressProps } from './components/progress';
 export { Slider } from './components/slider';
 export type { SliderOrientation, SliderProps } from './components/slider';
 
+export { CircularProgress } from './components/circular-progress';
+export type { CircularProgressProps } from './components/circular-progress';
+
 export { Skeleton } from './components/skeleton';
 export type { SkeletonProps } from './components/skeleton';
 

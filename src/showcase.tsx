@@ -10,6 +10,7 @@ import {
   Card,
   Checkbox,
   Chip,
+  CircularProgress,
   CodeBlock,
   CopyButton,
   Divider,
@@ -294,6 +295,9 @@ function Showcase() {
   const [spinnerSize, setSpinnerSize] = useState<'sm' | 'md' | 'lg'>('md');
   const [progressValue, setProgressValue] = useState(60);
   const [sliderValue, setSliderValue] = useState(42);
+  const [circularValue, setCircularValue] = useState<'0' | '35' | '70' | '100' | 'indeterminate'>(
+    '70',
+  );
   const [sliderOrientation, setSliderOrientation] = useState<'horizontal' | 'vertical'>(
     'horizontal',
   );
@@ -912,6 +916,36 @@ function Showcase() {
                         options={['0', '25', '50', '75', '100'] as const}
                         value={String(progressValue)}
                         onChange={(v) => setProgressValue(Number(v))}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="CircularProgress"
+                    description="A ring on an SVG arc — determinate from a value, or indeterminate while playback buffers, with an optional percentage in the middle."
+                  >
+                    <div className="flex min-h-[64px] items-center gap-6">
+                      <CircularProgress
+                        size={56}
+                        value={
+                          circularValue === 'indeterminate' ? undefined : Number(circularValue)
+                        }
+                        showValue
+                      />
+                      <CircularProgress
+                        size={24}
+                        thickness={3}
+                        value={
+                          circularValue === 'indeterminate' ? undefined : Number(circularValue)
+                        }
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="value"
+                        options={['0', '35', '70', '100', 'indeterminate'] as const}
+                        value={circularValue}
+                        onChange={setCircularValue}
                       />
                     </div>
                   </Entry>

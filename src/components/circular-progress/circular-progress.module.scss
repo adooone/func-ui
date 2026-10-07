@@ -1,0 +1,61 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: var(--fui-text);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--fui-text) 18%, transparent);
+}
+
+.value {
+  fill: none;
+  stroke: var(--fui-circular-fill, var(--fui-accent));
+  stroke-linecap: butt;
+  transition: stroke-dasharray 240ms ease;
+}
+
+.indeterminate .svg {
+  animation: fui-circular-spin 0.9s linear infinite;
+
+  @include reduced-motion {
+    animation-duration: 2.2s;
+  }
+}
+
+.indeterminate .value {
+  transition: none;
+}
+
+.text {
+  position: absolute;
+  font-family: $font-family-mono;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+@keyframes fui-circular-spin {
+  from {
+    transform: rotate(-90deg);
+  }
+
+  to {
+    transform: rotate(270deg);
+  }
+}

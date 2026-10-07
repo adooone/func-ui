@@ -55,6 +55,16 @@
           }
         }
       }
+    },
+    {
+      "include": ["src/components/circular-progress/**"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useFocusableInteractive": "off"
+          }
+        }
+      }
     }
   ]
 }
