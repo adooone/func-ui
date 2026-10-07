@@ -13,7 +13,8 @@ tags:
 Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player app leans on Slider (volume/seek) and CircularProgress (playback/loading); the admin app on DataTable. Menu already shipped in [[IDEA-3]] with trigger, items and align; it still needs separators to cover mojo-ui's Popup/PopupItem use cases.
 
 ### Phases
-- [ ] Slider (controlled value, min/max/step, keyboard, vertical option for volume)
+- [x] Slider (controlled value, min/max/step, keyboard, vertical option for volume)
+      run: 3m50s · 52 in · 13.2k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [ ] CircularProgress (determinate + indeterminate)
 - [ ] Radio + RadioGroup
 - [ ] Tabs (ARIA tablist, controlled/uncontrolled)

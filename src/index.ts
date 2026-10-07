@@ -75,6 +75,9 @@ export type { SpinnerProps } from './components/spinner';
 export { Progress } from './components/progress';
 export type { ProgressProps } from './components/progress';
 
+export { Slider } from './components/slider';
+export type { SliderOrientation, SliderProps } from './components/slider';
+
 export { Skeleton } from './components/skeleton';
 export type { SkeletonProps } from './components/skeleton';
 

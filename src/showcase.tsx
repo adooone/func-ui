@@ -30,6 +30,7 @@ import {
   SegmentedControl,
   Select,
   Skeleton,
+  Slider,
   Spinner,
   Stamp,
   StatusDot,
@@ -292,6 +293,10 @@ function Showcase() {
 
   const [spinnerSize, setSpinnerSize] = useState<'sm' | 'md' | 'lg'>('md');
   const [progressValue, setProgressValue] = useState(60);
+  const [sliderValue, setSliderValue] = useState(42);
+  const [sliderOrientation, setSliderOrientation] = useState<'horizontal' | 'vertical'>(
+    'horizontal',
+  );
   const [skeletonVariant, setSkeletonVariant] = useState<'text' | 'rect' | 'circle'>('text');
 
   const [linkColor, setLinkColor] = useState<'inherit' | 'accent'>('accent');
@@ -907,6 +912,31 @@ function Showcase() {
                         options={['0', '25', '50', '75', '100'] as const}
                         value={String(progressValue)}
                         onChange={(v) => setProgressValue(Number(v))}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="Slider"
+                    description="A native range input with a tokenised fill — controlled value, min/max/step, arrow-key support, and a vertical orientation for volume faders."
+                  >
+                    <div className="flex min-h-[132px] items-center">
+                      <Slider
+                        label="volume"
+                        value={sliderValue}
+                        onChange={setSliderValue}
+                        orientation={sliderOrientation}
+                        length={sliderOrientation === 'vertical' ? 120 : 240}
+                        showValue
+                        formatValue={(v) => `${v}%`}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="orientation"
+                        options={['horizontal', 'vertical'] as const}
+                        value={sliderOrientation}
+                        onChange={setSliderOrientation}
                       />
                     </div>
                   </Entry>
