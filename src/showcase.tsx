@@ -13,6 +13,7 @@ import {
   CircularProgress,
   CodeBlock,
   CopyButton,
+  DataTable,
   Divider,
   Drawer,
   EmptyState,
@@ -98,6 +99,12 @@ const iconNames: IconName[] = [
   'commit',
   'github',
   'note',
+];
+
+const pressings = [
+  { n: 1, title: 'Mothership Connection', year: 1975, copies: 12400 },
+  { n: 2, title: 'One Nation Under a Groove', year: 1978, copies: 9800 },
+  { n: 3, title: 'Off the Wall', year: 1979, copies: 23150 },
 ];
 
 const selectOptions: SelectOption[] = [
@@ -318,6 +325,7 @@ function Showcase() {
 
   const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
 
+  const [tableState, setTableState] = useState<'data' | 'loading' | 'empty'>('data');
   const [tabsOrientation, setTabsOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
   const [segValue, setSegValue] = useState('list');
 
@@ -1311,6 +1319,37 @@ function Showcase() {
                       icon={<Icon name="copy" size={16} />}
                       copiedIcon={<Icon name="check" size={16} />}
                     />
+                  </Entry>
+
+                  <Entry
+                    name="DataTable"
+                    description="A semantic table from a columns array — each column owns its header, width, alignment, and cell renderer. Striped and hoverable by default, with compact density, skeleton loading rows, an empty message, and optional row clicks."
+                  >
+                    <DataTable
+                      caption="pressings"
+                      data={tableState === 'empty' ? [] : pressings}
+                      loading={tableState === 'loading'}
+                      columns={[
+                        { key: 'n', header: '#', cell: (p) => p.n, width: 48 },
+                        { key: 'title', header: 'Title', cell: (p) => p.title },
+                        { key: 'year', header: 'Year', cell: (p) => p.year, align: 'center' },
+                        {
+                          key: 'copies',
+                          header: 'Copies',
+                          cell: (p) => p.copies.toLocaleString('en-US'),
+                          align: 'right',
+                        },
+                      ]}
+                      keyExtractor={(p) => String(p.n)}
+                    />
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="state"
+                        options={['data', 'loading', 'empty'] as const}
+                        value={tableState}
+                        onChange={setTableState}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry

@@ -23,5 +23,6 @@ Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player 
       run: 2m14s · 22 in · 7.9k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [x] Menu separators to complete the Popup/PopupItem patterns (trigger, items, align already shipped)
       run: 1m51s · 18 in · 5.9k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
-- [ ] DataTable (columns, cell renderers; scope after auditing radio admin usage)
+- [x] DataTable (columns, cell renderers; scope after auditing radio admin usage)
+      run: 2m53s · 26 in · 9.3k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [ ] Audit radio apps' actual mojo-ui prop usage before finalizing each API

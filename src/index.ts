@@ -117,6 +117,13 @@ export type { CodeBlockProps, CodeDiff, CodeLine } from './components/code-block
 export { CopyButton } from './components/copy-button';
 export type { CopyButtonProps } from './components/copy-button';
 
+export { DataTable } from './components/data-table';
+export type {
+  DataTableAlign,
+  DataTableColumn,
+  DataTableProps,
+} from './components/data-table';
+
 export { Breadcrumb } from './components/breadcrumb';
 export type { BreadcrumbItem, BreadcrumbProps } from './components/breadcrumb';
 
