@@ -15,4 +15,13 @@ mojo-ui's surface to cover: Button, IconButton, Card, Input, Select, Textarea, C
 
 Open decisions for migration time: whether func-ui ships PageLayout/StatsGrid equivalents or radio composes them from Backdrop/Glass/Card; whether mojo-ui's style-constant exports get func-ui counterparts or dissolve into Tailwind preset utilities.
 
-Blocked until IDEA-1..3 and IDEA-7 ship.
+IDEA-1..3 have shipped; blocked until [[IDEA-7]] ships.
+
+### Phases
+- [ ] Audit the 38 mojo-ui imports and map each to a func-ui export
+      Produces the component-by-component mapping plus the list of props with no equivalent.
+- [ ] Settle the open decisions on PageLayout/StatsGrid and style constants
+- [ ] Wire func-ui into the radio monorepo side by side with mojo-ui
+      Dependency, Tailwind preset and theme wiring, so both packages can render at once during the migration.
+- [ ] Migrate the apps one at a time: admin, player, wave
+- [ ] Drop @dendelion/mojo-ui once no imports remain

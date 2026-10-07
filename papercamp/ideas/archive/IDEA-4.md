@@ -2,9 +2,9 @@
 id: IDEA-4
 title: Showcase entries for all components
 type: docs
-status: review
+status: done
 created: 2026-08-04
-updated: 2026-08-10
+updated: 2026-08-11
 tags:
   - showcase
   - release
