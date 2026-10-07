@@ -2,7 +2,7 @@
 id: IDEA-7
 title: Radio-parity components
 type: feat
-status: planned
+status: review
 created: 2026-08-04
 tags:
   - components
@@ -25,4 +25,5 @@ Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player 
       run: 1m51s · 18 in · 5.9k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [x] DataTable (columns, cell renderers; scope after auditing radio admin usage)
       run: 2m53s · 26 in · 9.3k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
-- [ ] Audit radio apps' actual mojo-ui prop usage before finalizing each API
+- [x] Audit radio apps' actual mojo-ui prop usage before finalizing each API
+      run: 2m42s · 30 in · 9.1k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0

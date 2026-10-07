@@ -90,3 +90,8 @@
   border: none;
   background-color: color-mix(in srgb, var(--fui-text) 15%, transparent);
 }
+
+.selected {
+  box-shadow: inset 2px 0 0 0 var(--fui-accent);
+  font-weight: 700;
+}

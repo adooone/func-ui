@@ -325,6 +325,7 @@ function Showcase() {
 
   const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
 
+  const [menuSort, setMenuSort] = useState<'year' | 'title'>('year');
   const [tableState, setTableState] = useState<'data' | 'loading' | 'empty'>('data');
   const [tabsOrientation, setTabsOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
   const [segValue, setSegValue] = useState('list');
@@ -985,7 +986,7 @@ function Showcase() {
                       />
                       <CircularProgress
                         size={24}
-                        thickness={3}
+                        strokeWidth={3}
                         value={
                           circularValue === 'indeterminate' ? undefined : Number(circularValue)
                         }
@@ -1367,7 +1368,7 @@ function Showcase() {
 
                   <Entry
                     name="Menu"
-                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, separators between groups, and a danger variant."
+                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, separators between groups, a selected state for single-choice pickers, and a danger variant."
                   >
                     <Menu
                       trigger={
@@ -1376,6 +1377,19 @@ function Showcase() {
                         </span>
                       }
                       items={[
+                        {
+                          label: 'Sort by year',
+                          icon: <Icon name="sort-asc" size={16} />,
+                          selected: menuSort === 'year',
+                          onSelect: () => setMenuSort('year'),
+                        },
+                        {
+                          label: 'Sort by title',
+                          icon: <Icon name="sort-desc" size={16} />,
+                          selected: menuSort === 'title',
+                          onSelect: () => setMenuSort('title'),
+                        },
+                        { separator: true },
                         { label: 'Rename', icon: <Icon name="wand" size={16} /> },
                         { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
                         {

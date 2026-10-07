@@ -6,7 +6,7 @@ export interface CircularProgressProps extends Omit<HTMLAttributes<HTMLSpanEleme
   value?: number;
   max?: number;
   size?: number;
-  thickness?: number;
+  strokeWidth?: number;
   color?: string;
   label?: string;
   showValue?: boolean;
@@ -17,7 +17,7 @@ export function CircularProgress({
   value,
   max = 100,
   size = 48,
-  thickness = 4,
+  strokeWidth = 4,
   color,
   label = 'Loading',
   showValue = false,
@@ -31,7 +31,7 @@ export function CircularProgress({
   const fraction = indeterminate || max <= 0 ? 0 : clamped / max;
   const percent = Math.round(fraction * 100);
 
-  const radius = (size - thickness) / 2;
+  const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const dash = indeterminate
     ? `${circumference * 0.25} ${circumference * 0.75}`
@@ -56,14 +56,14 @@ export function CircularProgress({
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          strokeWidth={thickness}
+          strokeWidth={strokeWidth}
         />
         <circle
           className={styles.value}
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          strokeWidth={thickness}
+          strokeWidth={strokeWidth}
           strokeDasharray={dash}
         />
       </svg>

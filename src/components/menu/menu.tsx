@@ -8,6 +8,7 @@ export interface MenuItem {
   icon?: ReactNode;
   disabled?: boolean;
   danger?: boolean;
+  selected?: boolean;
 }
 
 export interface MenuSeparator {
@@ -171,12 +172,14 @@ export function Menu({ trigger, items, triggerLabel, align = 'start', className 
                 key={itemId(index)}
                 type="button"
                 id={itemId(index)}
-                role="menuitem"
+                role={item.selected == null ? 'menuitem' : 'menuitemradio'}
+                aria-checked={item.selected}
                 tabIndex={-1}
                 disabled={item.disabled}
                 className={cn(
                   styles.item,
                   item.danger && styles.danger,
+                  item.selected && styles.selected,
                   index === activeIndex && styles.active,
                 )}
                 onPointerMove={() => !item.disabled && setActiveIndex(index)}
