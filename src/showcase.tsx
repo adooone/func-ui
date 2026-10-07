@@ -28,6 +28,8 @@ import {
   Menu,
   Modal,
   Progress,
+  Radio,
+  RadioGroup,
   SegmentedControl,
   Select,
   Skeleton,
@@ -279,6 +281,8 @@ function Showcase() {
 
   const [checked, setChecked] = useState(true);
   const [switchOn, setSwitchOn] = useState(true);
+  const [radioValue, setRadioValue] = useState('vinyl');
+  const [radioOrientation, setRadioOrientation] = useState<'vertical' | 'horizontal'>('vertical');
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSize, setModalSize] = useState<'sm' | 'md' | 'lg'>('md');
@@ -746,6 +750,43 @@ function Showcase() {
                       onChange={(e) => setChecked(e.target.checked)}
                       size={fieldSize}
                     />
+                  </Entry>
+
+                  <Entry
+                    name="Radio / RadioGroup"
+                    description="Native radios in a fieldset — RadioGroup wires the shared name so arrow keys move the selection, with vertical or horizontal layout; Radio is also usable on its own."
+                  >
+                    <RadioGroup
+                      legend="format"
+                      value={radioValue}
+                      onChange={setRadioValue}
+                      orientation={radioOrientation}
+                      size={fieldSize}
+                      helperText="Pressing is per-format."
+                      options={[
+                        { value: 'vinyl', label: 'Vinyl' },
+                        { value: 'tape', label: 'Cassette' },
+                        { value: 'cd', label: 'CD' },
+                        { value: 'wax', label: 'Wax cylinder', disabled: true },
+                      ]}
+                    />
+                    <div className="mt-5">
+                      <Radio
+                        label="Standalone — mono mixdown"
+                        name="fui-showcase-mixdown"
+                        checked={radioValue === 'mono'}
+                        onChange={() => setRadioValue('mono')}
+                        size={fieldSize}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="orientation"
+                        options={['vertical', 'horizontal'] as const}
+                        value={radioOrientation}
+                        onChange={setRadioOrientation}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry

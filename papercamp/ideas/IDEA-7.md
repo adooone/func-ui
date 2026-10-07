@@ -17,7 +17,8 @@ Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player 
       run: 3m50s · 52 in · 13.2k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [x] CircularProgress (determinate + indeterminate)
       run: 1m57s · 20 in · 6.6k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
-- [ ] Radio + RadioGroup
+- [x] Radio + RadioGroup
+      run: 1m38s · 20 in · 6.7k out · opus-5 · sess:a8fcfb3e-0292-4e70-a302-8f34850859d0
 - [ ] Tabs (ARIA tablist, controlled/uncontrolled)
 - [ ] Menu separators to complete the Popup/PopupItem patterns (trigger, items, align already shipped)
 - [ ] DataTable (columns, cell renderers; scope after auditing radio admin usage)

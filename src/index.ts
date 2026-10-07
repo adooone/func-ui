@@ -51,6 +51,9 @@ export type { SelectOption, SelectProps } from './components/select';
 export { Checkbox } from './components/checkbox';
 export type { CheckboxProps } from './components/checkbox';
 
+export { Radio, RadioGroup } from './components/radio';
+export type { RadioGroupProps, RadioOption, RadioProps } from './components/radio';
+
 export { Switch } from './components/switch';
 export type { SwitchProps } from './components/switch';
 
