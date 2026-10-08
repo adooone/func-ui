@@ -2,7 +2,7 @@
 id: IDEA-11
 title: Hosted showcase
 type: docs
-status: planned
+status: review
 created: 2026-10-08
 updated: 2026-10-08
 tags:
@@ -68,11 +68,12 @@ unless one is already free on adoo.one.
       accept the settings `vercel.json` provides, wait for the first
       production deploy, open it and check fonts and dark mode, then log
       the URL in this idea's thread as a decision note.
-- [ ] Phase 3 — Point the package at the deployed site
+- [x] Phase 3 — Point the package at the deployed site
       Read the URL from the thread note left by the manual step; if it is
       absent, stop and log a question rather than guessing a `.vercel.app`
       name. Set `homepage` in package.json to it and link it from the
       README's first lines.
+      run: 1m19s · 10 in · 1.5k out · opus-5 · sess:0dad5947-3178-42b4-9d4c-7e269136b70c
 - [x] [manual] Archive IDEA-10 and update IDEA-11 showcase deploy plan
 
 ### Thread

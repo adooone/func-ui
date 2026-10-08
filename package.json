@@ -50,7 +50,7 @@
     "type": "git",
     "url": "git+https://github.com/adooone/func-ui.git"
   },
-  "homepage": "https://github.com/adooone/func-ui#readme",
+  "homepage": "https://func-ui.vercel.app",
   "keywords": [
     "react",
     "components",

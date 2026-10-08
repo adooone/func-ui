@@ -5,7 +5,8 @@ and a **lava-lamp glow**. Extracted from the [df.adoo.one](https://df.adoo.one) 
 
 > `@dendelion/func-ui` · React 18 · Tailwind-friendly · CSS-modules under the hood
 
-**Showcase:** not hosted yet — run `pnpm dev` for the local tour.
+**Showcase:** [func-ui.vercel.app](https://func-ui.vercel.app) — every component, live.
+Run `pnpm dev` for the same tour locally.
 
 ## Install
 
