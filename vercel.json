@@ -3,5 +3,6 @@
   "framework": null,
   "buildCommand": "pnpm run build:showcase",
   "outputDirectory": "dist/app",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "pnpm install --frozen-lockfile",
+  "rewrites": [{ "source": "/((?!assets/|fonts/).*)", "destination": "/index.html" }]
 }

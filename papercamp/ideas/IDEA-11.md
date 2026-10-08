@@ -46,7 +46,7 @@ the single-file app it is. Custom domain beyond whatever Vercel assigns,
 unless one is already free on adoo.one.
 
 ### Phases
-- [ ] Phase 1 — Deploy configuration in the repo
+- [x] Phase 1 — Deploy configuration in the repo
       Add a root `vercel.json` with `buildCommand: pnpm build:showcase`,
       `outputDirectory: dist/app`, `installCommand: pnpm install`, and the
       SPA rewrite the admin uses, so the dashboard import needs no manual
@@ -55,6 +55,7 @@ unless one is already free on adoo.one.
       dark class from localStorage before first paint in the built output.
       Add `pnpm build:showcase` to `ci.yml` so a component change that
       breaks the showcase fails the PR rather than the deploy.
+      run: 1m15s · 30 in · 3k out · opus-5 · sess:0dad5947-3178-42b4-9d4c-7e269136b70c
 - [ ] Phase 2 — Make the deployed page self-describing
       Show the package version read from package.json at build time, link
       the GitHub repo and the npm page from the welcome section, and give
