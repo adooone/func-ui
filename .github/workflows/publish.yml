@@ -26,13 +26,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
-          registry-url: https://registry.npmjs.org
-
-      # npm trusted publishing (OIDC) needs npm >= 11.5.1; Node 20 bundles npm 10
-      - name: Upgrade npm
-        run: npm install -g npm@latest && npm --version
 
       - name: Install dependencies
         run: pnpm install
@@ -40,5 +35,10 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      # Trusted publishing needs npm 11.5+; Node 22 bundles npm 10. No registry-url on
+      # setup-node either: its placeholder auth token would be sent instead of the OIDC exchange.
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --provenance
