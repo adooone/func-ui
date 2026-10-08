@@ -2,6 +2,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { type CSSProperties, type ReactNode, type Ref, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+// Imported directly, not only via ./index: the production build drops the
+// barrel's side-effect import, which shipped a showcase without fonts,
+// --fui-* tokens or Tailwind (IDEA-11).
+import './globals.scss';
 import {
   Alert,
   Backdrop,
