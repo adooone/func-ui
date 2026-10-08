@@ -2,7 +2,7 @@
 id: IDEA-10
 title: Ship 0.2.0 and bring the package docs up to date
 type: chore
-status: planned
+status: review
 created: 2026-10-08
 updated: 2026-10-08
 tags:
@@ -55,7 +55,8 @@ showcase; that is [[IDEA-11]].
       for the showcase that [[IDEA-11]] fills in. Drop the "on the way"
       line.
       run: 2m45s · 40 in · 8.2k out · opus-5 · sess:c907b65d-b0c5-4868-a099-07a9eb9aee5a
-- [ ] Phase 3 — Commit the papercamp housekeeping
+- [x] Phase 3 — Commit the papercamp housekeeping
       Land the IDEA-7 archive move with its config and run-order edits,
       flip the IDEA-7 row in `ideas/index.md` to done, and add the rows
       for IDEA-10, IDEA-11 and IDEA-12.
+      run: 1m22s · 22 in · 4.1k out · opus-5 · sess:c907b65d-b0c5-4868-a099-07a9eb9aee5a
