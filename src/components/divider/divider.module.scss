@@ -18,6 +18,9 @@ $divider-line: color-mix(in srgb, var(--fui-text) 15%, transparent);
 .vertical {
   align-self: stretch;
   width: 1px;
+  // Tailwind preflight gives every <hr> height: 0; a flex item with a
+  // definite height can't stretch, so restore auto for the cross axis.
+  height: auto;
   min-height: 1em;
   background-color: $divider-line;
 }
