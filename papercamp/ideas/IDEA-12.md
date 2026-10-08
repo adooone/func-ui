@@ -2,7 +2,7 @@
 id: IDEA-12
 title: Lamp control family from mojo-ui
 type: feat
-status: review
+status: in-progress
 created: 2026-10-08
 tags:
   - components
@@ -94,7 +94,20 @@ where those live is a radio-side question, logged below.
       exports; a `feat:` commit so release-please cuts 0.3.0 and the
       trusted publisher ships it.
       run: 3m10s · 48 in · 10.9k out · opus-5 · sess:d6e3f9cf-2b50-4e88-aece-84f1550e9442
+- [ ] Phase 6 — Review findings (2026-10-08 showcase pass)
+      Give the lamp family its own top-level showcase section: add `lamp`
+      to the `sections` array between `components` and `tokens` so the
+      side nav and the IntersectionObserver pick it up, move the Lamp
+      heading, lead and the five entries into a `SectionBlock id="lamp"`
+      after Components, and drop the inline stock counterparts (Button,
+      IconButton, Switch, StatusDot, Progress) from the lamp entries —
+      the default set reads first on its own, the lamp set follows. Keep
+      the width scrub keyed to Components. Also wrap the showcase root in
+      a small error boundary that renders the thrown message in place,
+      so a demo control that crashes a render shows the error instead of
+      a blank panel.
 
 ### Thread
 - [ ] 2026-10-08 [question] [agent] mojo's lamp text was designed for KyivType Sans, which func-ui does not ship (it uses Montserrat Alternates; only Tiny5 is shared). Do the lamp controls bundle KyivType in `public/fonts`, or do they inherit func-ui's sans and the radio app sets its own?
 - [ ] 2026-10-08 [question] [agent] Admin uses mojo's moss/bark/coal/sun/ember Tailwind scales in 32 files via `mojoPreset`. Should `funcPreset` grow those scales so one preset serves the admin, or does the admin keep them in its own `theme.extend` after mojo-ui is removed?
+- [x] 2026-10-08 [decision] [user] The showcase keeps default and lamp controls apart: a dedicated Lamp section after Components, not lamp entries interleaved with their stock counterparts.
