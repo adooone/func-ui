@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { type CSSProperties, type ReactNode, type Ref, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { version } from '../package.json';
 // Imported directly, not only via ./index: the production build drops the
 // barrel's side-effect import, which shipped a showcase without fonts,
 // --fui-* tokens or Tailwind (IDEA-11).
@@ -62,6 +63,9 @@ import type {
 } from './index';
 
 const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
+
+const repoUrl = 'https://github.com/adooone/func-ui';
+const npmUrl = 'https://www.npmjs.com/package/@dendelion/func-ui';
 
 // Long enough that one copy always exceeds the panel width; rendered twice
 // for the seamless -50% marquee loop.
@@ -522,9 +526,31 @@ function Showcase() {
                   {/* Bottom-right corner — point-symmetric to "Frosted." top-left */}
                   <div className="self-end text-right">
                     <h2 className="font-title text-5xl font-bold leading-tight">Welcome!</h2>
+                    <p className="mt-2 font-mono text-sm font-bold lowercase text-accent">
+                      @dendelion/func-ui v{version}
+                    </p>
                     <Button className="mt-6" onClick={() => scrollTo('components')}>
                       Explore components
                     </Button>
+                    {/* Raw anchors — LinkButton renders a <button>, which can't carry an href */}
+                    <div className="mt-6 flex justify-end gap-6 font-mono text-sm lowercase">
+                      <a
+                        className="text-accent underline-offset-4 hover:underline"
+                        href={repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        github
+                      </a>
+                      <a
+                        className="text-accent underline-offset-4 hover:underline"
+                        href={npmUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        npm
+                      </a>
+                    </div>
                   </div>
                 </section>
 
@@ -1462,14 +1488,16 @@ function Showcase() {
                 <SectionBlock id="docs" title="Docs" lead="Getting started with the package.">
                   <Entry
                     name="Install"
-                    description="Add the package and import the stylesheet once."
+                    description="Add the package, then import the components and the stylesheet — the JS bundle does not pull the CSS in for you."
                   >
-                    <pre className="overflow-x-auto bg-black/20 p-4 font-[ui-monospace,monospace] text-sm dark:bg-black/40">
-                      {`pnpm add @dendelion/func-ui
-
-import { Backdrop, Glass, Button } from '@dendelion/func-ui';
+                    <div className="flex flex-col gap-3">
+                      <CodeBlock code="pnpm add @dendelion/func-ui" />
+                      <CodeBlock
+                        filename="app.tsx"
+                        code={`import { Backdrop, Button, Glass } from '@dendelion/func-ui';
 import '@dendelion/func-ui/dist/index.css';`}
-                    </pre>
+                      />
+                    </div>
                   </Entry>
                   <Entry
                     name="Foundations"

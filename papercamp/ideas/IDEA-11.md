@@ -56,11 +56,12 @@ unless one is already free on adoo.one.
       Add `pnpm build:showcase` to `ci.yml` so a component change that
       breaks the showcase fails the PR rather than the deploy.
       run: 1m15s · 30 in · 3k out · opus-5 · sess:0dad5947-3178-42b4-9d4c-7e269136b70c
-- [ ] Phase 2 — Make the deployed page self-describing
+- [x] Phase 2 — Make the deployed page self-describing
       Show the package version read from package.json at build time, link
       the GitHub repo and the npm page from the welcome section, and give
       the Docs section the same install and stylesheet-import snippet the
       README carries after [[IDEA-10]] phase 2.
+      run: 2m33s · 36 in · 7.5k out · opus-5 · sess:0dad5947-3178-42b4-9d4c-7e269136b70c
 - [x] [manual] Create the Vercel project from adooone/func-ui
       In the Vercel dashboard import `adooone/func-ui` (grant the GitHub
       integration access to the `adooone` account if it is not listed),
