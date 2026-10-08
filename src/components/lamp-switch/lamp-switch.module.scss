@@ -1,0 +1,201 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/lamp' as *;
+
+$lamp-switch-tones: ('green', 'yellow', 'gray', 'red', 'dark');
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-family-sans;
+  line-height: 1.4;
+  color: var(--fui-text);
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: $lamp-radius-full;
+}
+
+.bezel {
+  @include lamp-bezel;
+}
+
+.socket {
+  @include lamp-socket;
+}
+
+.glow {
+  position: absolute;
+  border-radius: $lamp-radius-full;
+  opacity: 0;
+  transition: opacity 100ms ease-out;
+  @include lamp-frosted-inner;
+}
+
+.knob {
+  position: absolute;
+  margin-right: 8px;
+  border-radius: $lamp-radius-full;
+  background: var(--fui-lamp-dark);
+  transition: margin 150ms ease-out;
+  @include lamp-frosted-inner;
+}
+
+.labels {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: $lamp-radius-full;
+  pointer-events: none;
+}
+
+.off,
+.on {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.68);
+  letter-spacing: 0.5px;
+  transition:
+    opacity 150ms ease-out,
+    transform 150ms ease-out;
+}
+
+.divider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.text {
+  user-select: none;
+}
+
+.input:focus-visible + .switch {
+  @include focus-ring;
+}
+
+.input:checked + .switch {
+  .glow {
+    opacity: 0.6;
+  }
+
+  .knob {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+
+  .off {
+    transform: translateX(2px) scale(1.1);
+    opacity: 0.2;
+  }
+}
+
+.input:not(:checked) + .switch .on {
+  transform: translateX(-2px) scale(1.1);
+  opacity: 0.2;
+}
+
+@each $tone in $lamp-switch-tones {
+  .switch.#{$tone} .glow {
+    @include lamp-tone($tone);
+  }
+
+  .input:checked + .switch.#{$tone} .knob {
+    @include lamp-tone($tone);
+    @include lamp-glow($tone);
+  }
+}
+
+.sm {
+  width: 56px;
+  height: 28px;
+
+  .socket,
+  .glow,
+  .knob,
+  .labels {
+    inset: lamp-size(sm, inset);
+  }
+
+  .labels {
+    margin: 0 4px;
+    padding: 0 5px;
+  }
+
+  .off,
+  .on {
+    font-size: 9px;
+  }
+}
+
+.md {
+  width: 72px;
+  height: 36px;
+
+  .socket,
+  .glow,
+  .knob,
+  .labels {
+    inset: lamp-size(md, inset);
+  }
+
+  .labels {
+    margin: 0 4px;
+    padding: 0 6px;
+  }
+
+  .off,
+  .on {
+    font-size: 12px;
+  }
+}
+
+.lg {
+  width: 88px;
+  height: 44px;
+
+  .socket,
+  .glow,
+  .knob,
+  .labels {
+    inset: lamp-size(lg, inset);
+  }
+
+  .labels {
+    margin: 0 5px;
+    padding: 0 8px;
+  }
+
+  .off,
+  .on {
+    font-size: 16px;
+  }
+}

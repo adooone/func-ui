@@ -24,6 +24,12 @@ export type { LampButtonProps } from './components/lamp-button';
 export { LampIconButton } from './components/lamp-icon-button';
 export type { LampIconButtonProps } from './components/lamp-icon-button';
 
+export { LampSwitch } from './components/lamp-switch';
+export type { LampSwitchProps } from './components/lamp-switch';
+
+export { LampStatus } from './components/lamp-status';
+export type { LampStatusProps, LampStatusValue } from './components/lamp-status';
+
 export type { LampSize, LampTone } from './types/lamp';
 
 export { LinkButton } from './components/link-button';

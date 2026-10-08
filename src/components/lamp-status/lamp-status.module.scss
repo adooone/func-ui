@@ -1,0 +1,80 @@
+@use 'sass:map';
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/lamp' as *;
+
+$lamp-status-size: 24px;
+$lamp-status-inset: 2.5px;
+$lamp-status-text: (
+  'green': 'success',
+  'yellow': 'warning',
+  'red': 'error',
+  'dark': 'neutral',
+);
+
+.lampStatus {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.lamp {
+  position: relative;
+  flex-shrink: 0;
+  width: $lamp-status-size;
+  height: $lamp-status-size;
+  border-radius: $lamp-radius-full;
+}
+
+.bezel {
+  @include lamp-bezel;
+}
+
+.socket {
+  @include lamp-socket($lamp-status-inset);
+}
+
+.surface {
+  @include lamp-surface($lamp-status-inset);
+  border-radius: $lamp-radius-full;
+
+  @each $tone in map.keys($lamp-status-text) {
+    &.#{$tone} {
+      @include lamp-tone($tone);
+      box-shadow: $lamp-frosted-shadow, 0 0 8px 1px var(--fui-lamp-#{$tone}-glow);
+    }
+  }
+}
+
+.pulse {
+  animation: fui-lamp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+.text {
+  font-family: $font-family-sans;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @each $tone, $semantic in $lamp-status-text {
+    &.#{$tone} {
+      color: var(--fui-status-#{$semantic}-text);
+    }
+  }
+}
+
+@keyframes fui-lamp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
