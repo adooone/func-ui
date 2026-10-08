@@ -3,7 +3,7 @@
   "projectName": "film-ui",
   "initializedAt": "2026-08-04T14:52:35.357Z",
   "nextId": {
-    "idea": 10
+    "idea": 13
   },
   "defaultAgents": {
     "phase": {
@@ -35,5 +35,50 @@
   "port": 3041,
   "commands": {
     "build": "pnpm --dir node_modules/@dendelion/paper-camp run build:toolbar"
+  },
+  "desk": {
+    "services": [
+      {
+        "name": "Dev Server",
+        "cmd": "vite",
+        "port": 3040,
+        "healthcheck": "http://localhost:3040"
+      },
+      {
+        "name": "Preview",
+        "cmd": "vite preview"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Types",
+        "cmd": "tsc --noEmit"
+      },
+      {
+        "name": "Lint",
+        "cmd": "biome check ./src && stylelint \"src/**/*.scss\"",
+        "fixCmd": "biome check ./src --write && stylelint \"src/**/*.scss\""
+      },
+      {
+        "name": "Tests",
+        "cmd": "vitest run"
+      },
+      {
+        "name": "Build",
+        "cmd": "vite build"
+      },
+      {
+        "name": "Showcase Build",
+        "cmd": "vite build --config vite.app.config.ts"
+      },
+      {
+        "name": "Package Exports",
+        "cmd": "publint"
+      }
+    ],
+    "ci": {
+      "repo": "adooone/func-ui",
+      "releasePlease": true
+    }
   }
 }

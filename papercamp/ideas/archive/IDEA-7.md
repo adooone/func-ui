@@ -2,13 +2,14 @@
 id: IDEA-7
 title: Radio-parity components
 type: feat
-status: review
+status: done
 created: 2026-08-04
 updated: 2026-10-07
 tags:
   - components
   - release
   - radio
+order: 1
 ---
 
 Components the radio apps use from mojo-ui that IDEA-1..3 don't cover. A player app leans on Slider (volume/seek) and CircularProgress (playback/loading); the admin app on DataTable. Menu already shipped in [[IDEA-3]] with trigger, items and align; it still needs separators to cover mojo-ui's Popup/PopupItem use cases.

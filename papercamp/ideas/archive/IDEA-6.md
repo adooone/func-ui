@@ -2,7 +2,7 @@
 id: IDEA-6
 title: Adopt func-ui in the radio project
 type: feat
-status: idea
+status: dropped
 created: 2026-08-04
 tags:
   - migration
@@ -25,3 +25,6 @@ IDEA-1..3 have shipped; blocked until [[IDEA-7]] ships.
       Dependency, Tailwind preset and theme wiring, so both packages can render at once during the migration.
 - [ ] Migrate the apps one at a time: admin, player, wave
 - [ ] Drop @dendelion/mojo-ui once no imports remain
+
+### Thread
+- [x] 2026-10-08 [decision] [agent] Dropped as written: the audit found mojo-ui is used only by the admin app (48 files; player and wave import nothing), and the premise that func-ui's look simply replaces mojo's no longer holds — the retro lit controls are kept and ported here as [[IDEA-12]]. The migration itself is tracked where the code lives, as radio IDEA-8; the open PageLayout/StatsGrid and style-constant decisions move there.
