@@ -46,7 +46,7 @@ showcase; that is [[IDEA-11]].
       provenance attestation, then on npmjs.com set the package's
       publishing access to require two-factor or a trusted publisher so a
       stray local `npm publish` cannot bypass the workflow.
-- [ ] Phase 2 — Rewrite the README for the real surface
+- [x] Phase 2 — Rewrite the README for the real surface
       Component list grouped as in `src/index.ts` (ambient, actions, forms,
       overlays, progress and status, nav and data, text); install plus the
       two imports a consumer needs (`@dendelion/func-ui` and
@@ -54,6 +54,7 @@ showcase; that is [[IDEA-11]].
       shipped in `public/fonts` and how to serve them; a placeholder link
       for the showcase that [[IDEA-11]] fills in. Drop the "on the way"
       line.
+      run: 2m45s · 40 in · 8.2k out · opus-5 · sess:c907b65d-b0c5-4868-a099-07a9eb9aee5a
 - [ ] Phase 3 — Commit the papercamp housekeeping
       Land the IDEA-7 archive move with its config and run-order edits,
       flip the IDEA-7 row in `ideas/index.md` to done, and add the rows

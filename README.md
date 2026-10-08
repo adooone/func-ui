@@ -5,20 +5,29 @@ and a **lava-lamp glow**. Extracted from the [df.adoo.one](https://df.adoo.one) 
 
 > `@dendelion/func-ui` · React 18 · Tailwind-friendly · CSS-modules under the hood
 
+**Showcase:** not hosted yet — run `pnpm dev` for the local tour.
+
 ## Install
 
 ```bash
 pnpm add @dendelion/func-ui
 ```
 
+Two imports are required: the components and the stylesheet. The JS bundle does
+**not** pull the CSS in for you, so skipping the second line leaves everything
+unstyled.
+
 ```tsx
-import { Backdrop, Glass } from '@dendelion/func-ui';
+import { Backdrop, Button, Glass } from '@dendelion/func-ui';
 import '@dendelion/func-ui/dist/index.css';
 
 export default function App() {
   return (
     <Backdrop>
-      <Glass className="p-12">Frosted. Noisy. Cosy.</Glass>
+      <Glass className="p-12">
+        Frosted. Noisy. Cosy.
+        <Button>Give up the funk</Button>
+      </Glass>
     </Backdrop>
   );
 }
@@ -27,24 +36,111 @@ export default function App() {
 Toggle dark mode by adding/removing the `dark` class on `<html>` — every token
 (`--fui-*`) retints automatically.
 
-## Components (foundation)
+## Fonts
 
-| Component | What it is |
-| --- | --- |
-| `Backdrop` | Full-bleed ambient shell — composes `Glow` + `Grain` behind content |
-| `Grain` | Drifting film-grain overlay |
-| `Glow` | The lava-lamp gooey glow (colour follows `--fui-glow`) |
-| `Glass` | The frosted translucent surface primitive |
+The stylesheet declares `@font-face` for Montserrat Alternates (body), KyivType
+Serif (titles) and Tiny5 (pixel accents), pointing at absolute `/fonts/*.woff2`
+URLs. The package ships the files; your app has to serve them from that path:
 
-More chunks (Card, Button, IconButton, ThemeToggle, Layout, Page, Nav) are on the way.
+```bash
+cp -r node_modules/@dendelion/func-ui/dist/fonts public/fonts
+```
+
+Without them the components still work — the browser just falls back to the
+next family in each stack.
 
 ## Tailwind preset
+
+Optional, and only needed if you want the library's tokens as Tailwind
+utilities (`font-title`, `text-accent`, `shadow-offset`, `animate-grain`, …).
 
 ```ts
 // tailwind.config.ts
 import { funcPreset } from '@dendelion/func-ui/tailwind';
 export default { presets: [funcPreset], content: [/* ... */] };
 ```
+
+## Components
+
+### Ambient
+
+| Component | What it is |
+| --- | --- |
+| `Grain` | Drifting film-grain overlay |
+| `Glow` | The lava-lamp gooey glow (colour follows `--fui-glow`) |
+| `Backdrop` | Full-bleed ambient shell — composes `Glow` + `Grain` behind content |
+| `Glass` | The frosted translucent surface primitive |
+
+### Actions
+
+| Component | What it is |
+| --- | --- |
+| `Button` | The primary action, in the offset-shadow style |
+| `IconButton` | Square icon-only button |
+| `LinkButton` | An anchor that looks like a `Button` |
+| `FileButton` | A button wrapping a hidden file input (`onFiles`) |
+| `CopyButton` | Copies text to the clipboard and confirms inline |
+
+### Forms
+
+| Component | What it is |
+| --- | --- |
+| `Input` | Single-line text field with label and error slots |
+| `Textarea` | Multi-line counterpart |
+| `Select` | Combobox over `SelectOption[]`, with a hidden native select for form posts |
+| `Checkbox` | Checkbox with label |
+| `Radio` / `RadioGroup` | A single radio, or a managed group from `RadioOption[]` |
+| `Switch` | On/off toggle |
+| `Slider` | Range input, horizontal or vertical |
+
+### Overlays
+
+| Component | What it is |
+| --- | --- |
+| `Tooltip` | Hover/focus tooltip around any single child |
+| `ToastProvider` / `useToast` | Toast host plus the hook that pushes them |
+| `Modal` | Centred dialog with a glass panel |
+| `Drawer` | Panel that slides in from any side |
+| `Menu` | Dropdown menu of items and separators |
+
+### Progress and status
+
+| Component | What it is |
+| --- | --- |
+| `Stamp` | Small status label — the five semantic variants |
+| `StatusDot` | Just the dot, optionally pulsing |
+| `Alert` | Block-level message, dismissible |
+| `Spinner` | Indeterminate spinner |
+| `Progress` | Linear progress bar |
+| `CircularProgress` | Ring progress |
+| `Skeleton` | Loading placeholder (text, rect, circle) |
+| `EmptyState` | Loading / empty / error panel with icon, title and action |
+
+### Nav and data
+
+| Component | What it is |
+| --- | --- |
+| `Card` | Content surface, optionally clickable |
+| `ListItem` | Dense selectable row with icon and action slots |
+| `Divider` | Rule, horizontal or vertical, with an optional label |
+| `Chip` | Toggleable filter pill |
+| `SegmentedControl` | Exclusive choice between a few options |
+| `Tabs` | Tab strip plus panels, horizontal or vertical |
+| `Breadcrumb` | Trail of links ending in the current page |
+| `DataTable` | Typed table — `DataTableColumn<T>[]` over your rows |
+
+### Text
+
+| Component | What it is |
+| --- | --- |
+| `Kbd` | Keycap |
+| `InlineCode` | Inline code span |
+| `CodeBlock` | Multi-line code with optional add/remove diff markers |
+
+### Also exported
+
+`Icon` (the built-in `IconName` set) and `cn`, the `clsx` + `tailwind-merge`
+class joiner the components use internally.
 
 ## Develop
 
