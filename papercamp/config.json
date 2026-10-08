@@ -40,40 +40,40 @@
     "services": [
       {
         "name": "Dev Server",
-        "cmd": "vite",
+        "cmd": "pnpm run dev",
         "port": 3040,
         "healthcheck": "http://localhost:3040"
       },
       {
         "name": "Preview",
-        "cmd": "vite preview"
+        "cmd": "pnpm run preview"
       }
     ],
     "checks": [
       {
         "name": "Types",
-        "cmd": "tsc --noEmit"
+        "cmd": "pnpm run check-types"
       },
       {
         "name": "Lint",
-        "cmd": "biome check ./src && stylelint \"src/**/*.scss\"",
-        "fixCmd": "biome check ./src --write && stylelint \"src/**/*.scss\""
+        "cmd": "pnpm run lint",
+        "fixCmd": "pnpm run lint:fix"
       },
       {
         "name": "Tests",
-        "cmd": "vitest run"
+        "cmd": "pnpm run test"
       },
       {
         "name": "Build",
-        "cmd": "vite build"
+        "cmd": "pnpm run build"
       },
       {
         "name": "Showcase Build",
-        "cmd": "vite build --config vite.app.config.ts"
+        "cmd": "pnpm run build:showcase"
       },
       {
         "name": "Package Exports",
-        "cmd": "publint"
+        "cmd": "pnpm run check-package"
       }
     ],
     "ci": {
