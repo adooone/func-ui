@@ -425,7 +425,7 @@ function Showcase() {
         style={{ '--fui-glow-x': '-30vw' } as CSSProperties}
       >
         <Backdrop className="h-screen">
-          <div className="flex h-screen">
+          <div className="flex h-screen overflow-hidden">
             {/* Left — title + section nav; shrinks as Components reaches the top */}
             <div ref={leftRef} className="flex shrink-0 flex-col p-12" style={{ width: '50%' }}>
               <div>
@@ -482,8 +482,10 @@ function Showcase() {
             </div>
 
             {/* Right — frost lives on Glass; scrolling happens in a plain child
-              so the blur surface never repaints on scroll */}
-            <Glass className="flex-1">
+              so the blur surface never repaints on scroll. min-w-0 lets the
+              panel shrink below its content's intrinsic width (button grids,
+              DataTable, CodeBlock lines) instead of pushing past the viewport */}
+            <Glass className="min-w-0 flex-1">
               <div
                 ref={scrollRef}
                 className="flex h-full flex-col gap-16 overflow-x-hidden overflow-y-auto p-12"
