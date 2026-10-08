@@ -1,6 +1,14 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { type CSSProperties, type ReactNode, type Ref, useEffect, useRef, useState } from 'react';
+import {
+  type CSSProperties,
+  Component,
+  type ReactNode,
+  type Ref,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { createRoot } from 'react-dom/client';
 import { version } from '../package.json';
 // Imported directly, not only via ./index: the production build drops the
@@ -70,7 +78,7 @@ import type {
   TooltipPlacement,
 } from './index';
 
-const sections = ['welcome', 'components', 'tokens', 'docs'] as const;
+const sections = ['welcome', 'components', 'lamp', 'tokens', 'docs'] as const;
 
 const repoUrl = 'https://github.com/adooone/func-ui';
 const npmUrl = 'https://www.npmjs.com/package/@dendelion/func-ui';
@@ -1480,17 +1488,13 @@ function Showcase() {
                       ))}
                     </div>
                   </Entry>
+                </SectionBlock>
 
-                  <div>
-                    <h3 className="font-title text-2xl font-bold">Lamp</h3>
-                    <p className="mt-3 max-w-lg opacity-70">
-                      The retro lit family — a metal bezel, a dark socket and a glass surface over a
-                      coloured glow, themed through the --fui-lamp-* tokens. A separate family, so
-                      variant keeps meaning role everywhere else — here the colour is tone. Each one
-                      sits beside its stock counterpart.
-                    </p>
-                  </div>
-
+                <SectionBlock
+                  id="lamp"
+                  title="Lamp"
+                  lead="The retro lit family — a metal bezel, a dark socket and a glass surface over a coloured glow, themed through the --fui-lamp-* tokens. A separate family, so variant keeps meaning role everywhere else — here the colour is tone."
+                >
                   <Entry
                     name="LampButton"
                     description="Button in the lit style — the tone is the colour of the lamp, rounded picks the pill or the softer square, and icon slots a glyph before the label."
@@ -1513,9 +1517,6 @@ function Showcase() {
                       >
                         Play
                       </LampButton>
-                      <Button size="md" disabled={lampDisabled}>
-                        Stock Button
-                      </Button>
                     </div>
                     <div className="mt-4 flex flex-col gap-3">
                       <Control
@@ -1564,11 +1565,6 @@ function Showcase() {
                         size={lampSize}
                         disabled={lampDisabled}
                       />
-                      <IconButton
-                        icon={<PlusGlyph />}
-                        label="Stock IconButton"
-                        disabled={lampDisabled}
-                      />
                     </div>
                   </Entry>
 
@@ -1585,11 +1581,6 @@ function Showcase() {
                         onChange={(e) => setLampSwitchOn(e.target.checked)}
                         disabled={lampDisabled}
                       />
-                      <Switch
-                        label="Stock Switch"
-                        checked={lampSwitchOn}
-                        onChange={(e) => setLampSwitchOn(e.target.checked)}
-                      />
                     </div>
                   </Entry>
 
@@ -1599,7 +1590,6 @@ function Showcase() {
                   >
                     <div className="flex min-h-[48px] flex-wrap items-center gap-8">
                       <LampStatus status={lampStatus} />
-                      <StatusDot variant="success" pulse label="Stock StatusDot" />
                     </div>
                     <div className="mt-4 flex flex-col gap-3">
                       <Control
@@ -1631,7 +1621,6 @@ function Showcase() {
                         lampCount={20}
                         fullWidth
                       />
-                      <Progress value={lampMeterValue} />
                     </div>
                     <div className="mt-4 flex flex-col gap-3">
                       <Control
@@ -1734,5 +1723,33 @@ import '@dendelion/func-ui/dist/index.css';`}
   );
 }
 
+class ShowcaseBoundary extends Component<{ children: ReactNode }, { message: string | null }> {
+  state: { message: string | null } = { message: null };
+
+  static getDerivedStateFromError(error: unknown) {
+    return { message: error instanceof Error ? error.message : String(error) };
+  }
+
+  render() {
+    const { message } = this.state;
+    if (message === null) return this.props.children;
+    return (
+      <div className="flex h-screen items-center justify-center p-12">
+        <div className="max-w-lg">
+          <p className="font-mono text-sm font-bold uppercase tracking-wide text-red-500">
+            render error
+          </p>
+          <p className="mt-3 font-mono text-sm opacity-80">{message}</p>
+        </div>
+      </div>
+    );
+  }
+}
+
 const container = document.getElementById('root');
-if (container) createRoot(container).render(<Showcase />);
+if (container)
+  createRoot(container).render(
+    <ShowcaseBoundary>
+      <Showcase />
+    </ShowcaseBoundary>,
+  );

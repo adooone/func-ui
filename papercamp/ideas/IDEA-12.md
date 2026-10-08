@@ -2,7 +2,7 @@
 id: IDEA-12
 title: Lamp control family from mojo-ui
 type: feat
-status: in-progress
+status: review
 created: 2026-10-08
 tags:
   - components
@@ -94,7 +94,7 @@ where those live is a radio-side question, logged below.
       exports; a `feat:` commit so release-please cuts 0.3.0 and the
       trusted publisher ships it.
       run: 3m10s · 48 in · 10.9k out · opus-5 · sess:d6e3f9cf-2b50-4e88-aece-84f1550e9442
-- [ ] Phase 6 — Review findings (2026-10-08 showcase pass)
+- [x] Phase 6 — Review findings (2026-10-08 showcase pass)
       Give the lamp family its own top-level showcase section: add `lamp`
       to the `sections` array between `components` and `tokens` so the
       side nav and the IntersectionObserver pick it up, move the Lamp
@@ -106,6 +106,7 @@ where those live is a radio-side question, logged below.
       a small error boundary that renders the thrown message in place,
       so a demo control that crashes a render shows the error instead of
       a blank panel.
+      run: 2m27s · 38 in · 8.2k out · opus-5 · sess:1e421bb7-3889-441f-be1b-1b59e6a8b314
 
 ### Thread
 - [ ] 2026-10-08 [question] [agent] mojo's lamp text was designed for KyivType Sans, which func-ui does not ship (it uses Montserrat Alternates; only Tiny5 is shared). Do the lamp controls bundle KyivType in `public/fonts`, or do they inherit func-ui's sans and the radio app sets its own?
