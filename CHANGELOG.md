@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.2](https://github.com/adooone/func-ui/compare/v0.2.1...v0.2.2) (2026-10-08)
+
+
+### Bug Fixes
+
+* **showcase:** keep the content panel inside the viewport ([88b3310](https://github.com/adooone/func-ui/commit/88b3310fa6973b42bfbd007172cdad531ca49881))
+
+
+### Documentation
+
+* **release:** Phase 1 — Deploy configuration in the repo ([27fd6c1](https://github.com/adooone/func-ui/commit/27fd6c16504353d463cca184d062d44232ef1bc6))
+* **release:** Phase 2 — Make the deployed page self-describing ([25d4666](https://github.com/adooone/func-ui/commit/25d4666d045719b2f07991679b0683300c2363e1))
+* **release:** Phase 3 — Point the package at the deployed site ([16c6a3e](https://github.com/adooone/func-ui/commit/16c6a3e84829471e81ad591d3a6c54e7a1a35ed3))
+
 ## [0.2.1](https://github.com/adooone/func-ui/compare/v0.2.0...v0.2.1) (2026-10-08)
 
 
