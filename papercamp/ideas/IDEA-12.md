@@ -1,6 +1,6 @@
 ---
 id: IDEA-12
-title: Lamp control family — the retro lit controls from mojo-ui
+title: Lamp control family from mojo-ui
 type: feat
 status: planned
 created: 2026-10-08

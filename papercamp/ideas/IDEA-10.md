@@ -1,6 +1,6 @@
 ---
 id: IDEA-10
-title: Ship 0.2.0 and bring the package docs up to date
+title: Ship 0.2.0 and refresh package docs
 type: chore
 status: review
 created: 2026-10-08
