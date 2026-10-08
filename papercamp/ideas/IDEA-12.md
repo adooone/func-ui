@@ -93,6 +93,7 @@ where those live is a radio-side question, logged below.
       lamp control beside its stock counterpart; README rows for the new
       exports; a `feat:` commit so release-please cuts 0.3.0 and the
       trusted publisher ships it.
+      run: 3m10s · 48 in · 10.9k out · opus-5 · sess:d6e3f9cf-2b50-4e88-aece-84f1550e9442
 
 ### Thread
 - [ ] 2026-10-08 [question] [agent] mojo's lamp text was designed for KyivType Sans, which func-ui does not ship (it uses Montserrat Alternates; only Tiny5 is shared). Do the lamp controls bundle KyivType in `public/fonts`, or do they inherit func-ui's sans and the radio app sets its own?
