@@ -76,6 +76,7 @@ where those live is a radio-side question, logged below.
       from `src/index.ts`. Keep mojo's text treatment (uppercase, 0.1em
       tracking, drop-shadow filter) and the `dark` tone that admin leans
       on.
+      run: 4m59s · 30 in · 15.2k out · opus-5 · sess:7d8e6dbd-ec2d-4bc2-a054-9408b70b3ced
 - [ ] Phase 3 — LampSwitch and LampStatus
       Switch keeps the native checkbox for accessibility like func-ui's
       Switch does, with the lamp layers purely presentational. Status
