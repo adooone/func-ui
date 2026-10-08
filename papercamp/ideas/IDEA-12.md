@@ -70,7 +70,7 @@ where those live is a radio-side question, logged below.
       lamps readable on the dark ground); carry the `$sizes` map as SCSS
       since sizes are compile-time everywhere else in func-ui.
       run: 4m12s · 46 in · 15.1k out · opus-5 · sess:7d8e6dbd-ec2d-4bc2-a054-9408b70b3ced
-- [ ] Phase 2 — LampButton and LampIconButton
+- [x] Phase 2 — LampButton and LampIconButton
       New `src/components/lamp-button` and `lamp-icon-button` following
       the existing directory shape (tsx, module.scss, index.ts), exported
       from `src/index.ts`. Keep mojo's text treatment (uppercase, 0.1em

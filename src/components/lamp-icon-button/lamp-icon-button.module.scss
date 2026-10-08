@@ -1,0 +1,92 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/lamp' as *;
+
+.lampIconButton {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-radius: $lamp-radius-full;
+  cursor: pointer;
+  transition: $lamp-transition;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.bezel {
+  @include lamp-bezel;
+}
+
+.socket {
+  @include lamp-socket;
+}
+
+.surface {
+  @include lamp-surface;
+  border-radius: $lamp-radius-full;
+
+  @each $tone in ('green', 'yellow', 'gray', 'red', 'dark') {
+    &.#{$tone} {
+      @include lamp-tone($tone);
+      @include lamp-glow($tone);
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.inkLight {
+  color: #fff;
+}
+
+.inkDark {
+  color: #292524;
+}
+
+.sm {
+  width: lamp-size(sm, height);
+  height: lamp-size(sm, height);
+
+  .socket,
+  .surface {
+    inset: lamp-size(sm, inset);
+  }
+}
+
+.md {
+  width: lamp-size(md, height);
+  height: lamp-size(md, height);
+
+  .socket,
+  .surface {
+    inset: lamp-size(md, inset);
+  }
+}
+
+.lg {
+  width: lamp-size(lg, height);
+  height: lamp-size(lg, height);
+
+  .socket,
+  .surface {
+    inset: lamp-size(lg, inset);
+  }
+}

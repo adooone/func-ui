@@ -18,6 +18,14 @@ export type { ButtonProps } from './components/button';
 export { IconButton } from './components/icon-button';
 export type { IconButtonProps } from './components/icon-button';
 
+export { LampButton } from './components/lamp-button';
+export type { LampButtonProps } from './components/lamp-button';
+
+export { LampIconButton } from './components/lamp-icon-button';
+export type { LampIconButtonProps } from './components/lamp-icon-button';
+
+export type { LampSize, LampTone } from './types/lamp';
+
 export { LinkButton } from './components/link-button';
 export type { LinkButtonProps } from './components/link-button';
 
