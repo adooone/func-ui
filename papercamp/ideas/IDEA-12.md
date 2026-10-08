@@ -62,7 +62,7 @@ func-ui's versions. mojo's Tailwind colour scales and the KyivType fonts;
 where those live is a radio-side question, logged below.
 
 ### Phases
-- [ ] Phase 1 — Lamp foundation
+- [x] Phase 1 — Lamp foundation
       Port the bezel, socket, surface, frosted-inner and glow mixins into
       `src/styles/_lamp.scss`; lift the five tone gradients and glow
       colours out of mojo's `$variants` map into `--fui-lamp-*` custom

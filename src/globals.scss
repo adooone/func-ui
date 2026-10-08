@@ -92,6 +92,22 @@
   --fui-status-warning-text: #a66a1f;
   --fui-status-error-fill: rgba(214, 86, 86, 0.16);
   --fui-status-error-text: #b03a3a;
+
+  --fui-lamp-green: radial-gradient(circle at 50% 50%, #47f57d 7%, #6fce8c 74%);
+  --fui-lamp-green-glow: rgba(71, 245, 125, 0.5);
+  --fui-lamp-green-glow-strong: rgba(43, 165, 121, 0.7);
+  --fui-lamp-yellow: radial-gradient(circle at 50% 50%, #ffbd30 21%, #bea571 79%);
+  --fui-lamp-yellow-glow: rgba(254, 182, 28, 0.5);
+  --fui-lamp-yellow-glow-strong: rgba(191, 123, 10, 0.7);
+  --fui-lamp-gray: linear-gradient(180deg, #f2f2f2 0%, #bbae90 100%);
+  --fui-lamp-gray-glow: rgba(187, 174, 144, 0.5);
+  --fui-lamp-gray-glow-strong: rgba(130, 118, 92, 0.7);
+  --fui-lamp-red: radial-gradient(circle at 50% 50%, #ff5050 39%, #f99696 100%);
+  --fui-lamp-red-glow: rgba(255, 80, 80, 0.5);
+  --fui-lamp-red-glow-strong: rgba(192, 79, 79, 0.7);
+  --fui-lamp-dark: radial-gradient(circle at 50% 50%, #61675f 0%, #36302b 100%);
+  --fui-lamp-dark-glow: transparent;
+  --fui-lamp-dark-glow-strong: transparent;
 }
 
 .dark {
@@ -113,6 +129,15 @@
   --fui-status-warning-text: #ecc487;
   --fui-status-error-fill: rgba(226, 106, 106, 0.18);
   --fui-status-error-text: #eda1a1;
+
+  --fui-lamp-green-glow: rgba(71, 245, 125, 0.4);
+  --fui-lamp-green-glow-strong: rgba(71, 245, 125, 0.6);
+  --fui-lamp-yellow-glow: rgba(254, 182, 28, 0.4);
+  --fui-lamp-yellow-glow-strong: rgba(254, 182, 28, 0.6);
+  --fui-lamp-gray-glow: rgba(242, 242, 242, 0.4);
+  --fui-lamp-gray-glow-strong: rgba(242, 242, 242, 0.6);
+  --fui-lamp-red-glow: rgba(255, 80, 80, 0.4);
+  --fui-lamp-red-glow-strong: rgba(255, 80, 80, 0.6);
 }
 
 // ─── Base ──────────────────────────────────────────────────────

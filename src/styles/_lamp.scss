@@ -1,0 +1,118 @@
+@use 'sass:map';
+
+$lamp-sizes: (
+  sm: (
+    height: 36px,
+    inset: 3.5px,
+    padding: 0 20px,
+    radius: 18px,
+  ),
+  md: (
+    height: 48px,
+    inset: 4.5px,
+    padding: 0 20px,
+    radius: 24px,
+  ),
+  lg: (
+    height: 56px,
+    inset: 5.8px,
+    padding: 0 24px,
+    radius: 28px,
+  ),
+);
+
+@function lamp-size($size, $key) {
+  @return map.get($lamp-sizes, $size, $key);
+}
+
+$lamp-radius-full: 9999px;
+$lamp-radius-xl: 24px;
+
+$lamp-bezel-gradient: linear-gradient(
+  135deg,
+  #6e6e6e 0%,
+  #41403d 24%,
+  #373633 50%,
+  #1f1f1d 80%,
+  #1f1f1d 100%
+);
+$lamp-bezel-gradient-wide: linear-gradient(
+  135deg,
+  #6e6e6e 0%,
+  #41403d 24%,
+  #494947 50%,
+  #363636 80%,
+  #363636 100%
+);
+$lamp-bezel-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$lamp-bezel-soft-shadow:
+  0 4px 8px -2px rgba(0, 0, 0, 0.3),
+  0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+$lamp-socket-color: #1a1a1a;
+$lamp-socket-shadow:
+  1px 1px 2px rgba(0, 0, 0, 0.2),
+  3px 3px 2px rgba(0, 0, 0, 0.05),
+  2px 2px 8px rgba(0, 0, 0, 0.2);
+
+$lamp-frosted-shadow:
+  inset 5px 2px 5px 2px rgba(0, 0, 0, 0.2),
+  inset -1px 3px 6px 1px rgba(255, 255, 255, 0.6);
+$lamp-frosted-shadow-subtle:
+  inset 5px 2px 5px 2px rgba(0, 0, 0, 0.1),
+  inset -1px 3px 6px 1px rgba(255, 255, 255, 0.2);
+
+$lamp-transition: all 200ms ease-out;
+
+@mixin lamp-bezel {
+  position: absolute;
+  inset: 0;
+  border-radius: $lamp-radius-full;
+  background: $lamp-bezel-gradient;
+  box-shadow: $lamp-bezel-shadow;
+}
+
+@mixin lamp-bezel-soft {
+  position: absolute;
+  inset: 0;
+  background: $lamp-bezel-gradient-wide;
+  box-shadow: $lamp-bezel-soft-shadow;
+}
+
+@mixin lamp-socket($inset: lamp-size(lg, inset)) {
+  position: absolute;
+  inset: $inset;
+  border-radius: $lamp-radius-full;
+  background-color: $lamp-socket-color;
+  box-shadow: $lamp-socket-shadow;
+}
+
+@mixin lamp-surface($inset: lamp-size(lg, inset)) {
+  position: absolute;
+  inset: $inset;
+  border-radius: $lamp-radius-xl;
+  transition: $lamp-transition;
+}
+
+@mixin lamp-frosted-inner($subtle: false) {
+  @if $subtle {
+    box-shadow: $lamp-frosted-shadow-subtle;
+  } @else {
+    box-shadow: $lamp-frosted-shadow;
+  }
+}
+
+@mixin lamp-tone($tone) {
+  background: var(--fui-lamp-#{$tone});
+}
+
+@mixin lamp-glow($tone) {
+  @include lamp-frosted-inner;
+
+  &:hover {
+    box-shadow:
+      $lamp-frosted-shadow,
+      0 0 10px 2px var(--fui-lamp-#{$tone}-glow),
+      0 0 20px 0 var(--fui-lamp-#{$tone}-glow-strong);
+  }
+}
