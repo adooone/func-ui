@@ -102,9 +102,10 @@
   box-shadow:
     inset 0 0 0 2px var(--fui-shadow-color),
     $glass-shadow;
-  // Frost only when standing on the raw page background — inside a Glass
-  // surface --fui-nested-backdrop resolves to `none`.
-  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
+  // Always frosted: the list floats over the panel's own content, not the
+  // Glass surface, so the nested-backdrop switch (which turns blur off for
+  // in-flow controls sitting on the frost) must not apply here.
+  backdrop-filter: blur(12px);
 }
 
 .option {

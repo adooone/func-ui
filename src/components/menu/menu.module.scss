@@ -36,7 +36,9 @@
   box-shadow:
     inset 0 0 0 2px var(--fui-shadow-color),
     $glass-shadow;
-  backdrop-filter: var(--fui-nested-backdrop, blur(12px));
+  // Always frosted — the popup floats over panel content, so the nested
+  // backdrop switch for in-flow controls must not strip its blur.
+  backdrop-filter: blur(12px);
   outline: none;
 }
 
