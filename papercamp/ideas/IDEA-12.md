@@ -87,6 +87,7 @@ where those live is a radio-side question, logged below.
       LED bar with the `--lamp-count` width, partial-dot opacity for the
       fractional lamp, and a `fullWidth` prop replacing mojo's global
       `.w-full` hook. Add `glow` to CircularProgress.
+      run: 3m6s · 22 in · 10.1k out · opus-5 · sess:7d8e6dbd-ec2d-4bc2-a054-9408b70b3ced
 - [ ] Phase 5 — Showcase, README and 0.3.0
       A "Lamp" block in the showcase's Components section placing each
       lamp control beside its stock counterpart; README rows for the new
