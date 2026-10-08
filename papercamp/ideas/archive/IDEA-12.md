@@ -2,13 +2,15 @@
 id: IDEA-12
 title: Lamp control family from mojo-ui
 type: feat
-status: review
+status: done
 created: 2026-10-08
+updated: 2026-10-08
 tags:
   - components
   - retro
   - radio
   - release
+order: 1
 ---
 
 The radio project is moving from `@dendelion/mojo-ui` to func-ui and will
