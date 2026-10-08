@@ -41,8 +41,10 @@ keeps the review readable and keeps the checklist honest.
 ## The draft PR
 
 The first push to a `<type>/idea-N-…` branch auto-opens a draft PR into `main`
-(`.github/workflows/draft-pr.yml`), titled from the branch and linking back to
-the idea file. Nothing to do by hand — just push.
+(`.github/workflows/draft-pr.yml`), titled from the branch and filled in from
+`.github/pull_request_template.md` — the idea link, and its phase checklist
+copied out of the idea file. Nothing to do by hand — just push, then tick the
+phases off in the PR as their commits land.
 
 ```bash
 git push -u origin feat/idea-12-lamp-control-family
