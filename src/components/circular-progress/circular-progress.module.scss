@@ -29,6 +29,12 @@
   transition: stroke-dasharray 240ms ease;
 }
 
+.glow .svg {
+  filter: drop-shadow(
+    0 0 8px color-mix(in srgb, var(--fui-circular-fill, var(--fui-accent)) 40%, transparent)
+  );
+}
+
 .indeterminate .svg {
   animation: fui-circular-spin 0.9s linear infinite;
 

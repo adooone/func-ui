@@ -83,7 +83,7 @@ where those live is a radio-side question, logged below.
       maps the four states to tones and pulses running and initializing
       via a keyframe that respects prefers-reduced-motion.
       run: 3m37s · 32 in · 12.3k out · opus-5 · sess:7d8e6dbd-ec2d-4bc2-a054-9408b70b3ced
-- [ ] Phase 4 — LampMeter and the CircularProgress glow
+- [x] Phase 4 — LampMeter and the CircularProgress glow
       LED bar with the `--lamp-count` width, partial-dot opacity for the
       fractional lamp, and a `fullWidth` prop replacing mojo's global
       `.w-full` hook. Add `glow` to CircularProgress.

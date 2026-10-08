@@ -10,6 +10,7 @@ export interface CircularProgressProps extends Omit<HTMLAttributes<HTMLSpanEleme
   color?: string;
   label?: string;
   showValue?: boolean;
+  glow?: boolean;
   formatValue?: (percent: number, value: number) => ReactNode;
 }
 
@@ -21,6 +22,7 @@ export function CircularProgress({
   color,
   label = 'Loading',
   showValue = false,
+  glow = false,
   formatValue,
   className,
   style,
@@ -46,7 +48,12 @@ export function CircularProgress({
       aria-valuemin={indeterminate ? undefined : 0}
       aria-valuemax={indeterminate ? undefined : max}
       aria-valuenow={indeterminate ? undefined : clamped}
-      className={cn(styles.root, indeterminate && styles.indeterminate, className)}
+      className={cn(
+        styles.root,
+        indeterminate && styles.indeterminate,
+        glow && styles.glow,
+        className,
+      )}
       style={{ width: size, height: size, ...fill, ...style } as CSSProperties}
       {...props}
     >

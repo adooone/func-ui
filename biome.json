@@ -57,7 +57,7 @@
       }
     },
     {
-      "include": ["src/components/circular-progress/**"],
+      "include": ["src/components/circular-progress/**", "src/components/lamp-meter/**"],
       "linter": {
         "rules": {
           "a11y": {
