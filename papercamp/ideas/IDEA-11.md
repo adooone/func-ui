@@ -4,6 +4,7 @@ title: Hosted showcase
 type: docs
 status: planned
 created: 2026-10-08
+updated: 2026-10-08
 tags:
   - showcase
   - release
@@ -23,10 +24,20 @@ be compared against the stock ones, and the radio migration needs a
 reference the admin screens can be checked against without cloning this
 repo. It is also the link the npm page and README should carry.
 
-Vercel is the natural host: the radio admin already deploys there, the
-account exists, and a static Vite build needs no configuration beyond the
-build command and the output directory. The site is public; nothing in the
-showcase is sensitive.
+Vercel is the natural host: the radio admin already deploys there through
+the GitHub integration (its `vercel.json` carries only SPA rewrites; the
+project itself was created in the dashboard), the account exists, and a
+static Vite build needs nothing beyond a build command and an output
+directory. The site is public; nothing in the showcase is sensitive.
+
+Creating the Vercel project is the one step no agent phase can do: it needs
+the dashboard (the GitHub integration must also be granted access to the
+`adooone` account, which it may not have yet since radio lives under
+`croco-dendy`), the Vercel CLI login stored on this machine has expired,
+and paper-camp runs phases with no MCP servers and no browser. So that step
+is a `[manual]` item, and the agent phases around it only touch the repo.
+The deployed URL is recorded in this idea's thread once the project exists,
+and the last phase reads it from there.
 
 ### Out of scope
 
@@ -35,18 +46,29 @@ the single-file app it is. Custom domain beyond whatever Vercel assigns,
 unless one is already free on adoo.one.
 
 ### Phases
-- [ ] Phase 1 — Deploy the static showcase build
-      Create the Vercel project from `adooone/func-ui` with build command
-      `pnpm build:showcase`, output directory `dist/app`, and the pnpm
-      version from `packageManager`. Confirm the fonts under `public/fonts`
-      and the dark-mode class from localStorage work on the deployed URL,
-      not just locally.
+- [ ] Phase 1 — Deploy configuration in the repo
+      Add a root `vercel.json` with `buildCommand: pnpm build:showcase`,
+      `outputDirectory: dist/app`, `installCommand: pnpm install`, and the
+      SPA rewrite the admin uses, so the dashboard import needs no manual
+      settings. Confirm `pnpm build:showcase` produces `dist/app` with the
+      fonts from `public/fonts` and that `index.html` still applies the
+      dark class from localStorage before first paint in the built output.
+      Add `pnpm build:showcase` to `ci.yml` so a component change that
+      breaks the showcase fails the PR rather than the deploy.
 - [ ] Phase 2 — Make the deployed page self-describing
       Show the package version read from package.json at build time, link
       the GitHub repo and the npm page from the welcome section, and give
       the Docs section the same install and stylesheet-import snippet the
-      README will carry after [[IDEA-10]] phase 2.
-- [ ] Phase 3 — Point the package at it and guard the build
-      Set `homepage` in package.json to the deployed URL, link it from the
-      README, and add `pnpm build:showcase` to `ci.yml` so a component
-      change that breaks the showcase fails the PR rather than the deploy.
+      README carries after [[IDEA-10]] phase 2.
+- [ ] [manual] Create the Vercel project from adooone/func-ui
+      In the Vercel dashboard import `adooone/func-ui` (grant the GitHub
+      integration access to the `adooone` account if it is not listed),
+      accept the settings `vercel.json` provides, wait for the first
+      production deploy, open it and check fonts and dark mode, then log
+      the URL in this idea's thread as a decision note.
+- [ ] Phase 3 — Point the package at the deployed site
+      Read the URL from the thread note left by the manual step; if it is
+      absent, stop and log a question rather than guessing a `.vercel.app`
+      name. Set `homepage` in package.json to it and link it from the
+      README's first lines.
+- [x] [manual] Archive IDEA-10 and update IDEA-11 showcase deploy plan

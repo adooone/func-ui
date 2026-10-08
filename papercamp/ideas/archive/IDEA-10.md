@@ -2,13 +2,14 @@
 id: IDEA-10
 title: Ship 0.2.0 and refresh package docs
 type: chore
-status: review
+status: done
 created: 2026-10-08
 updated: 2026-10-08
 tags:
   - release
   - docs
   - papercamp
+order: 1
 ---
 
 0.2.0 exists as a git tag and a GitHub release but npm still serves 0.1.1:
