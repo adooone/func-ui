@@ -60,7 +60,7 @@ unless one is already free on adoo.one.
       the GitHub repo and the npm page from the welcome section, and give
       the Docs section the same install and stylesheet-import snippet the
       README carries after [[IDEA-10]] phase 2.
-- [ ] [manual] Create the Vercel project from adooone/func-ui
+- [x] [manual] Create the Vercel project from adooone/func-ui
       In the Vercel dashboard import `adooone/func-ui` (grant the GitHub
       integration access to the `adooone` account if it is not listed),
       accept the settings `vercel.json` provides, wait for the first
@@ -72,3 +72,6 @@ unless one is already free on adoo.one.
       name. Set `homepage` in package.json to it and link it from the
       README's first lines.
 - [x] [manual] Archive IDEA-10 and update IDEA-11 showcase deploy plan
+
+### Thread
+- [x] 2026-10-08 [decision] [user] Vercel project `func-ui` created in the croco-dendy-projects team from adooone/func-ui, production branch main, settings from `vercel.json`. Showcase URL: https://func-ui.vercel.app (the `-croco-dendy-projects` aliases sit behind Vercel Authentication, same as paper-ui). First production deploy built from 9fed31f; HTML, assets, the localStorage dark-mode bootstrap and the KyivType and Tiny5 fonts all serve.
