@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.1](https://github.com/adooone/func-ui/compare/v0.2.0...v0.2.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* **desk:** run desk commands through pnpm scripts ([ebd95bf](https://github.com/adooone/func-ui/commit/ebd95bfe0c55c4c78c9ed4141f255bd8fa448147))
+* **showcase:** import globals.scss directly so the built showcase is styled ([e645104](https://github.com/adooone/func-ui/commit/e645104bbba05d1393191fc7b026cee6e1265747))
+
+
+### Documentation
+
+* **ideas:** Record the func-ui Vercel project and showcase URL (IDEA-11) ([7531815](https://github.com/adooone/func-ui/commit/753181585ab38b152fb8e3d9233f1b3b628c1210))
+* **ideas:** retitle IDEA-10 and IDEA-12 to fit the title rule ([16a342a](https://github.com/adooone/func-ui/commit/16a342afb11c53d19bc5c55ad4e59e5bf3aed12d))
+* **ideas:** Ship 0.2.0 and bring the package docs up to date — plan ([4165809](https://github.com/adooone/func-ui/commit/4165809e8a28ff3949a641069bd66ca8a38e202b))
+
 ## [0.2.0](https://github.com/adooone/func-ui/compare/v0.1.1...v0.2.0) (2026-10-07)
 
 
