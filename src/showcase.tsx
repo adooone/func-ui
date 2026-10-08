@@ -29,6 +29,11 @@ import {
   InlineCode,
   Input,
   Kbd,
+  LampButton,
+  LampIconButton,
+  LampMeter,
+  LampStatus,
+  LampSwitch,
   LinkButton,
   ListItem,
   Menu,
@@ -56,6 +61,9 @@ import type {
   DrawerSide,
   EmptyStateStatus,
   IconName,
+  LampSize,
+  LampStatusValue,
+  LampTone,
   SelectOption,
   StampVariant,
   StatusDotVariant,
@@ -342,6 +350,15 @@ function Showcase() {
   const [drawerSide, setDrawerSide] = useState<DrawerSide>('right');
 
   const [fileName, setFileName] = useState<string | null>(null);
+
+  const [lampTone, setLampTone] = useState<LampTone>('green');
+  const [lampSize, setLampSize] = useState<LampSize>('md');
+  const [lampRounded, setLampRounded] = useState<'full' | 'half'>('full');
+  const [lampDisabled, setLampDisabled] = useState(false);
+  const [lampSwitchOn, setLampSwitchOn] = useState(true);
+  const [lampStatus, setLampStatus] = useState<LampStatusValue>('running');
+  const [lampMeterValue, setLampMeterValue] = useState(60);
+  const [circularGlow, setCircularGlow] = useState(true);
 
   // A different line every visit, like the lamp.
   const [funkLine] = useState(() => funkLines[Math.floor(Math.random() * funkLines.length)]);
@@ -1461,6 +1478,191 @@ function Showcase() {
                           <span className="font-mono text-xs opacity-60">{name}</span>
                         </div>
                       ))}
+                    </div>
+                  </Entry>
+
+                  <div>
+                    <h3 className="font-title text-2xl font-bold">Lamp</h3>
+                    <p className="mt-3 max-w-lg opacity-70">
+                      The retro lit family — a metal bezel, a dark socket and a glass surface over a
+                      coloured glow, themed through the --fui-lamp-* tokens. A separate family, so
+                      variant keeps meaning role everywhere else — here the colour is tone. Each one
+                      sits beside its stock counterpart.
+                    </p>
+                  </div>
+
+                  <Entry
+                    name="LampButton"
+                    description="Button in the lit style — the tone is the colour of the lamp, rounded picks the pill or the softer square, and icon slots a glyph before the label."
+                  >
+                    <div className="flex min-h-[80px] flex-wrap items-center gap-6">
+                      <LampButton
+                        tone={lampTone}
+                        size={lampSize}
+                        rounded={lampRounded}
+                        disabled={lampDisabled}
+                      >
+                        On air
+                      </LampButton>
+                      <LampButton
+                        tone={lampTone}
+                        size={lampSize}
+                        rounded={lampRounded}
+                        disabled={lampDisabled}
+                        icon={<Icon name="play" size={16} />}
+                      >
+                        Play
+                      </LampButton>
+                      <Button size="md" disabled={lampDisabled}>
+                        Stock Button
+                      </Button>
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="tone"
+                        options={['green', 'yellow', 'gray', 'red', 'dark'] as const}
+                        value={lampTone}
+                        onChange={setLampTone}
+                      />
+                      <Control
+                        label="size"
+                        options={['sm', 'md', 'lg'] as const}
+                        value={lampSize}
+                        onChange={setLampSize}
+                      />
+                      <Control
+                        label="rounded"
+                        options={['full', 'half'] as const}
+                        value={lampRounded}
+                        onChange={setLampRounded}
+                      />
+                      <Control
+                        label="disabled"
+                        options={['false', 'true'] as const}
+                        value={lampDisabled ? 'true' : 'false'}
+                        onChange={(v) => setLampDisabled(v === 'true')}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LampIconButton"
+                    description="The icon-only lamp — square, with a round lit surface and a required label for screen readers. Shares the tone and size controls above."
+                  >
+                    <div className="flex min-h-[64px] flex-wrap items-center gap-4">
+                      <LampIconButton
+                        icon={<Icon name="play" size={16} />}
+                        label="Play"
+                        tone={lampTone}
+                        size={lampSize}
+                        disabled={lampDisabled}
+                      />
+                      <LampIconButton
+                        icon={<Icon name="refresh" size={16} />}
+                        label="Reload"
+                        tone={lampTone}
+                        size={lampSize}
+                        disabled={lampDisabled}
+                      />
+                      <IconButton
+                        icon={<PlusGlyph />}
+                        label="Stock IconButton"
+                        disabled={lampDisabled}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LampSwitch"
+                    description="A lit rocker on the same native checkbox as Switch — the O / I legend and the glowing knob are the whole point, the input stays the accessible control."
+                  >
+                    <div className="flex min-h-[64px] flex-wrap items-center gap-8">
+                      <LampSwitch
+                        label="Transmitter"
+                        tone={lampTone}
+                        size={lampSize}
+                        checked={lampSwitchOn}
+                        onChange={(e) => setLampSwitchOn(e.target.checked)}
+                        disabled={lampDisabled}
+                      />
+                      <Switch
+                        label="Stock Switch"
+                        checked={lampSwitchOn}
+                        onChange={(e) => setLampSwitchOn(e.target.checked)}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LampStatus"
+                    description="The four machine states as a lamp plus its uppercase label — running and initializing pulse, unless the visitor asked for reduced motion."
+                  >
+                    <div className="flex min-h-[48px] flex-wrap items-center gap-8">
+                      <LampStatus status={lampStatus} />
+                      <StatusDot variant="success" pulse label="Stock StatusDot" />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="status"
+                        options={['running', 'stopped', 'error', 'initializing'] as const}
+                        value={lampStatus}
+                        onChange={setLampStatus}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="LampMeter"
+                    description="A row of LEDs in a recessed track instead of a continuous bar — lampCount sets the resolution and the lamp at the edge of the fill dims proportionally."
+                  >
+                    <div className="flex max-w-xs flex-col gap-5">
+                      <LampMeter
+                        value={lampMeterValue}
+                        tone={lampTone}
+                        size={lampSize}
+                        label="Signal"
+                        showValue
+                        fullWidth
+                      />
+                      <LampMeter
+                        value={lampMeterValue}
+                        tone={lampTone}
+                        size={lampSize}
+                        lampCount={20}
+                        fullWidth
+                      />
+                      <Progress value={lampMeterValue} />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="value"
+                        options={['0', '25', '50', '75', '100'] as const}
+                        value={String(lampMeterValue)}
+                        onChange={(v) => setLampMeterValue(Number(v))}
+                      />
+                    </div>
+                  </Entry>
+
+                  <Entry
+                    name="CircularProgress glow"
+                    description="No new component — the stock ring takes a glow flag that halos the arc in the fill colour."
+                  >
+                    <div className="flex min-h-[64px] items-center gap-8">
+                      <CircularProgress
+                        size={56}
+                        value={lampMeterValue}
+                        glow={circularGlow}
+                        showValue
+                      />
+                      <CircularProgress size={56} value={lampMeterValue} showValue />
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="glow"
+                        options={['false', 'true'] as const}
+                        value={circularGlow ? 'true' : 'false'}
+                        onChange={(v) => setCircularGlow(v === 'true')}
+                      />
                     </div>
                   </Entry>
                 </SectionBlock>

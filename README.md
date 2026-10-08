@@ -81,6 +81,8 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | `LinkButton` | An anchor that looks like a `Button` |
 | `FileButton` | A button wrapping a hidden file input (`onFiles`) |
 | `CopyButton` | Copies text to the clipboard and confirms inline |
+| `LampButton` | The lit retro action — `tone` is the lamp colour, `rounded` the pill or soft square |
+| `LampIconButton` | Icon-only lamp, square with a round lit surface |
 
 ### Forms
 
@@ -92,6 +94,7 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | `Checkbox` | Checkbox with label |
 | `Radio` / `RadioGroup` | A single radio, or a managed group from `RadioOption[]` |
 | `Switch` | On/off toggle |
+| `LampSwitch` | Lit rocker with the O / I legend, on the same native checkbox |
 | `Slider` | Range input, horizontal or vertical |
 
 ### Overlays
@@ -113,7 +116,9 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | `Alert` | Block-level message, dismissible |
 | `Spinner` | Indeterminate spinner |
 | `Progress` | Linear progress bar |
-| `CircularProgress` | Ring progress |
+| `CircularProgress` | Ring progress, with an optional `glow` halo |
+| `LampStatus` | The lit machine status — running / stopped / error / initializing |
+| `LampMeter` | LED bar meter — `lampCount` LEDs in a recessed track |
 | `Skeleton` | Loading placeholder (text, rect, circle) |
 | `EmptyState` | Loading / empty / error panel with icon, title and action |
 
@@ -140,8 +145,9 @@ export default { presets: [funcPreset], content: [/* ... */] };
 
 ### Also exported
 
-`Icon` (the built-in `IconName` set) and `cn`, the `clsx` + `tailwind-merge`
-class joiner the components use internally.
+`Icon` (the built-in `IconName` set), the `LampTone` / `LampSize` types shared by
+the lamp family, and `cn`, the `clsx` + `tailwind-merge` class joiner the
+components use internally.
 
 ## Develop
 

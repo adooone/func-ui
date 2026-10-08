@@ -2,7 +2,7 @@
 id: IDEA-12
 title: Lamp control family from mojo-ui
 type: feat
-status: planned
+status: review
 created: 2026-10-08
 tags:
   - components
@@ -88,7 +88,7 @@ where those live is a radio-side question, logged below.
       fractional lamp, and a `fullWidth` prop replacing mojo's global
       `.w-full` hook. Add `glow` to CircularProgress.
       run: 3m6s · 22 in · 10.1k out · opus-5 · sess:7d8e6dbd-ec2d-4bc2-a054-9408b70b3ced
-- [ ] Phase 5 — Showcase, README and 0.3.0
+- [x] Phase 5 — Showcase, README and 0.3.0
       A "Lamp" block in the showcase's Components section placing each
       lamp control beside its stock counterpart; README rows for the new
       exports; a `feat:` commit so release-please cuts 0.3.0 and the
