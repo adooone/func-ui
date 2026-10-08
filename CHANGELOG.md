@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.3.0](https://github.com/adooone/func-ui/compare/v0.2.2...v0.3.0) (2026-10-08)
+
+
+### Features
+
+* **components:** Phase 2 — LampButton and LampIconButton ([3e983cd](https://github.com/adooone/func-ui/commit/3e983cdbd44627e69a0b8636faf080589d9ca268))
+* **components:** Phase 3 — LampSwitch and LampStatus ([a058759](https://github.com/adooone/func-ui/commit/a058759825ce4903cf120fe71ff1e891ba64e0df))
+* **components:** Phase 4 — LampMeter and the CircularProgress glow ([7a5263d](https://github.com/adooone/func-ui/commit/7a5263d9b1c4ec64332c4f2f38d680e0cbd7dad4))
+* **release:** Phase 1 — Lamp foundation ([b3b1fd4](https://github.com/adooone/func-ui/commit/b3b1fd4253620fb0637969062c45bd907d7d5b32))
+* **release:** Phase 2 — LampButton and LampIconButton ([04417bc](https://github.com/adooone/func-ui/commit/04417bcce441970ab848eb1ce04d230eb7700e00))
+* **release:** Phase 3 — LampSwitch and LampStatus ([0933d86](https://github.com/adooone/func-ui/commit/0933d86f3b62ed54c88e1d4737b40b5c5670098f))
+* **release:** Phase 4 — LampMeter and the CircularProgress glow ([4c2cd79](https://github.com/adooone/func-ui/commit/4c2cd798546f7b83087afec8c2e54495d9e7fc9b))
+* **release:** Phase 5 — Showcase, README and 0.3.0 ([9219c64](https://github.com/adooone/func-ui/commit/9219c64ef4bf7e295c4393d81e5d4815d6df64f0))
+* **release:** Phase 6 — Review findings (2026-10-08 showcase pass) ([fb27ab2](https://github.com/adooone/func-ui/commit/fb27ab25aef518744505fab8dca2e43c27db0631))
+* **showcase:** Phase 5 — the Lamp block, README rows and 0.3.0 ([b08306d](https://github.com/adooone/func-ui/commit/b08306d8015e013d871677b7f47fd14ef8fe7227))
+* **styles:** Phase 1 — Lamp foundation ([3826a91](https://github.com/adooone/func-ui/commit/3826a910ba34a419fea6cba717fb1e23442f8378))
+
+
+### Bug Fixes
+
+* **components:** keep Select and Menu popups frosted inside Glass ([c92964b](https://github.com/adooone/func-ui/commit/c92964b838da3b1cc013f7bffccbdc5424eadaf7))
+* **components:** let the vertical Divider stretch under Tailwind preflight ([01592aa](https://github.com/adooone/func-ui/commit/01592aa36aeba6fa16dc8cf7b9562d9adcffcaaf))
+
+
+### Documentation
+
+* **ideas:** Lamp control family from mojo-ui — plan ([a615ff7](https://github.com/adooone/func-ui/commit/a615ff70b3c98c2559222e31578fd832c658d1f7))
+* **repo:** Hosted showcase ([edb76cc](https://github.com/adooone/func-ui/commit/edb76cc100cd70b10d1e773be1500ebbf9201610))
+
 ## [0.2.2](https://github.com/adooone/func-ui/compare/v0.2.1...v0.2.2) (2026-10-08)
 
 
