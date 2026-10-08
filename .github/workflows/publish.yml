@@ -3,9 +3,11 @@ name: Publish
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
@@ -28,6 +30,10 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
+      # npm trusted publishing (OIDC) needs npm >= 11.5.1; Node 20 bundles npm 10
+      - name: Upgrade npm
+        run: npm install -g npm@latest && npm --version
+
       - name: Install dependencies
         run: pnpm install
 
@@ -36,5 +42,3 @@ jobs:
 
       - name: Publish to npm
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
