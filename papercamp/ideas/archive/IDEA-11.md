@@ -2,13 +2,14 @@
 id: IDEA-11
 title: Hosted showcase
 type: docs
-status: review
+status: done
 created: 2026-10-08
 updated: 2026-10-08
 tags:
   - showcase
   - release
   - infra
+order: 1
 ---
 
 The showcase is the only visual documentation the library has, and it runs
