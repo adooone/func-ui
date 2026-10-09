@@ -43,12 +43,30 @@ jobs:
             exit 0
           fi
 
-          TITLE=$(echo "$BRANCH" | sed 's|^[^/]*/||' | sed 's/^[a-z]*-[0-9]*-//' | sed 's/-/ /g' | sed 's/\b\(.\)/\u\1/g')
           DISPLAY_ID=$(echo "$PLAN_ID" | sed 's/^\([a-z]*\)/\U\1/' | sed 's/\-[a-z]/\U&/')
-          FULL_TITLE="${DISPLAY_ID}: ${TITLE}"
 
           TEMPLATE=".github/pull_request_template.md"
           PLAN_FILE="papercamp/ideas/${DISPLAY_ID}.md"
+          if [ ! -f "$PLAN_FILE" ] && [ -f "papercamp/ideas/archive/${DISPLAY_ID}.md" ]; then
+            PLAN_FILE="papercamp/ideas/archive/${DISPLAY_ID}.md"
+          fi
+
+          TITLE=$(awk '
+            /^---[[:space:]]*$/ { n++; next }
+            n == 1 && /^title:[[:space:]]/ {
+              sub(/^title:[[:space:]]*/, "")
+              gsub(/^["'\'']|["'\'']$/, "")
+              print
+              exit
+            }
+          ' "$PLAN_FILE" 2>/dev/null || true)
+
+          if [ -z "$TITLE" ]; then
+            echo "No title: in '$PLAN_FILE' — falling back to the branch slug"
+            TITLE=$(echo "$BRANCH" | sed 's|^[^/]*/||' | sed 's/^[a-z]*-[0-9]*-//' | sed 's/-/ /g')
+          fi
+
+          FULL_TITLE="${DISPLAY_ID}: ${TITLE}"
 
           PHASES=$(awk '/^### Phases/{f=1;next} /^### /{f=0} f' "$PLAN_FILE" 2>/dev/null \
             | grep -E '^- \[[ x]\] ' || true)
