@@ -11,6 +11,6 @@
 | IDEA-7 | Radio-parity components | feat | done | components, release, radio |
 | IDEA-8 | Adopt branch-per-idea working flow | chore | idea | workflow |
 | IDEA-9 | Glass frost flickers on scroll — move the filter off the scroller's ancestry | fix | done | components, rendering |
-| IDEA-10 | Ship 0.2.0 and refresh package docs | chore | review | release, docs, papercamp |
-| IDEA-11 | Hosted showcase | docs | planned | showcase, release, infra |
-| IDEA-12 | Lamp control family from mojo-ui | feat | planned | components, retro, radio, release |
+| IDEA-10 | Ship 0.2.0 and refresh package docs | chore | done | release, docs, papercamp |
+| IDEA-11 | Hosted showcase | docs | done | showcase, release, infra |
+| IDEA-12 | Lamp control family from mojo-ui | feat | done | components, retro, radio, release |
