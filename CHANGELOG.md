@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/adooone/func-ui/compare/v0.3.0...v0.4.0) (2026-10-09)
+
+
+### Features
+
+* **repo:** Lamp control family from mojo-ui ([81d4be5](https://github.com/adooone/func-ui/commit/81d4be584611ea7fee2c1456e1918c75d6dcdfad))
+
 ## [0.3.0](https://github.com/adooone/func-ui/compare/v0.2.2...v0.3.0) (2026-10-08)
 
 
