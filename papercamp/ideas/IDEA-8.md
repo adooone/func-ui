@@ -2,7 +2,7 @@
 id: IDEA-8
 title: Adopt branch-per-idea working flow
 type: chore
-status: idea
+status: review
 created: 2026-08-04
 tags:
   - workflow
@@ -23,5 +23,5 @@ Also adopted with this idea: workflow friction gets captured as corpus ideas ins
 - [x] Protect main so changes land through pull requests
       Require a PR plus the existing CI checks before merge, so the review gate is enforced and not just documented.
       run: 6m11s · 42 in · 9.2k out · opus-5 · sess:dcc742f2-b6b9-4c3b-8bd7-53b3221ec434
-- [ ] Run the next idea through the flow end to end
+- [x] Run the next idea through the flow end to end
       Branch, per-phase commits, PR, showcase walkthrough, merge — then fix whatever the dry run exposes.
