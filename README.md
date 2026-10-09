@@ -159,6 +159,10 @@ pnpm build:showcase   # build the showcase site (dist/app/)
 pnpm ci               # types + lint + build
 ```
 
+Work is organised as ideas under `papercamp/ideas/`, one branch per idea.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch, commit and pull-request
+flow.
+
 ## License
 
 MIT © Dendelion

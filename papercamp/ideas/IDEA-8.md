@@ -2,7 +2,7 @@
 id: IDEA-8
 title: Adopt branch-per-idea working flow
 type: chore
-status: idea
+status: review
 created: 2026-08-04
 tags:
   - workflow
@@ -15,10 +15,14 @@ Proposal, starting with Tier 2 ([[IDEA-2]]): one branch per idea (`<type>/idea-N
 Also adopted with this idea: workflow friction gets captured as corpus ideas instead of living in chat — same way paper-camp dogfoods its own process.
 
 ### Phases
-- [ ] Write the flow into the repo's contributor guide
+- [x] Write the flow into the repo's contributor guide
       Branch naming, phases-as-commits, promoting the auto-opened draft PR to ready when all phases are checked, the trivial-chore exception, and logging workflow friction as new ideas.
-- [ ] Add a PR template that links the idea and lists its phases
-- [ ] Protect main so changes land through pull requests
+      run: 2m22s · 28 in · 4.6k out · opus-5 · sess:e15a35a5-7c55-4c53-94fd-288e04541ed1
+- [x] Add a PR template that links the idea and lists its phases
+      run: 1m47s · 14 in · 5.9k out · opus-5 · sess:e15a35a5-7c55-4c53-94fd-288e04541ed1
+- [x] Protect main so changes land through pull requests
       Require a PR plus the existing CI checks before merge, so the review gate is enforced and not just documented.
-- [ ] Run the next idea through the flow end to end
+      run: 6m11s · 42 in · 9.2k out · opus-5 · sess:dcc742f2-b6b9-4c3b-8bd7-53b3221ec434
+- [x] Run the next idea through the flow end to end
       Branch, per-phase commits, PR, showcase walkthrough, merge — then fix whatever the dry run exposes.
+      run: 8m28s · 72 in · 23.4k out · opus-5 · sess:dcc742f2-b6b9-4c3b-8bd7-53b3221ec434
