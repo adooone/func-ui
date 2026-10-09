@@ -60,6 +60,31 @@ components live, in a browser, which is the one check CI cannot do. `status:`
 goes to `done` only after that walkthrough; an agent finishing the last phase
 sets `review` and stops there.
 
+## What enforces this
+
+`main` is covered by a repository ruleset kept in the repo as
+`.github/rulesets/main.json`, so the gate is reviewable and restorable rather
+than invisible settings-UI state. It requires a pull request and a green
+`Quality` check (the `ci.yml` job) before anything lands, and forbids deleting
+or force-pushing the branch.
+
+Zero approvals are required: this is a solo-owner repo, and GitHub will not let
+you approve your own PR, so a review requirement would deadlock. The gate is
+the PR, CI, and the showcase walkthrough. For the same reason the JSON pins
+`require_extra_approval_for_unattributed_changes` to `false` — GitHub defaults
+it to `true`, which would demand an approval nobody can give on any PR holding
+a commit it cannot attribute to an account.
+
+Repo admins can bypass, which is what keeps the trivial-chore exception below
+workable, and is also the escape hatch if a rule ever does wedge a merge.
+
+The live ruleset is `24774325`. Edit the JSON and re-apply it to change the
+rules:
+
+```bash
+gh api --method PUT repos/adooone/func-ui/rulesets/24774325 --input .github/rulesets/main.json
+```
+
 ## The trivial-chore exception
 
 Committing straight to `main` stays fine for trivial chores that carry no
