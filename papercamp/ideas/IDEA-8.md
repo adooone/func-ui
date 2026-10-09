@@ -22,5 +22,6 @@ Also adopted with this idea: workflow friction gets captured as corpus ideas ins
       run: 1m47s · 14 in · 5.9k out · opus-5 · sess:e15a35a5-7c55-4c53-94fd-288e04541ed1
 - [x] Protect main so changes land through pull requests
       Require a PR plus the existing CI checks before merge, so the review gate is enforced and not just documented.
+      run: 6m11s · 42 in · 9.2k out · opus-5 · sess:dcc742f2-b6b9-4c3b-8bd7-53b3221ec434
 - [ ] Run the next idea through the flow end to end
       Branch, per-phase commits, PR, showcase walkthrough, merge — then fix whatever the dry run exposes.
