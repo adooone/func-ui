@@ -105,7 +105,7 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | `ToastProvider` / `useToast` | Toast host plus the hook that pushes them |
 | `Modal` | Centred dialog with a glass panel |
 | `Drawer` | Panel that slides in from any side |
-| `Menu` | Dropdown menu of items and separators |
+| `Menu` | Dropdown menu of items and separators — `asChild` clones an interactive trigger instead of wrapping it in a button |
 
 ### Progress and status
 

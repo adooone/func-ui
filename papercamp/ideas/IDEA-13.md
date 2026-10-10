@@ -2,7 +2,7 @@
 id: IDEA-13
 title: Menu asChild trigger support
 type: feat
-status: in-progress
+status: review
 created: 2026-10-10
 updated: 2026-10-10
 tags:
@@ -55,7 +55,7 @@ After this ships, the radio admin drops the `tabIndex={-1}` workaround in
       tree, carrying the ARIA wiring), handler composition, keyboard
       open, focus return via the attached ref, and a LampButton trigger
       mirroring the radio admin's usage.
-- [ ] Phase 3 — Showcase demo and README row
+- [x] Phase 3 — Showcase demo and README row
       A second Menu beside the existing showcase entry using
       `asChild` with a LampButton trigger, and the README's Menu row
       mentions the asChild escape hatch.

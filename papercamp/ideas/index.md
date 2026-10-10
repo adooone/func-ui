@@ -14,4 +14,4 @@
 | IDEA-10 | Ship 0.2.0 and refresh package docs | chore | done | release, docs, papercamp |
 | IDEA-11 | Hosted showcase | docs | done | showcase, release, infra |
 | IDEA-12 | Lamp control family from mojo-ui | feat | done | components, retro, radio, release |
-| IDEA-13 | Menu asChild trigger support | feat | in-progress | components, a11y, radio, release |
+| IDEA-13 | Menu asChild trigger support | feat | review | components, a11y, radio, release |
