@@ -1,12 +1,13 @@
 import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from 'react';
 import type { LampSize, LampTone } from '../../types/lamp';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './lamp-button.module.scss';
 
 export interface LampButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   tone?: LampTone;
   size?: LampSize;
-  rounded?: 'full' | 'half';
+  rounded?: Rounded;
   icon?: ReactNode;
 }
 
