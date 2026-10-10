@@ -52,6 +52,19 @@
   font-size: 0.75rem;
 }
 
+// ─── Rounded variants ──────────────────────────────────────────
+.full {
+  border-radius: $radius-full;
+}
+
+.half {
+  border-radius: $radius-half-sm;
+}
+
+.sm.half {
+  border-radius: $radius-half-xs;
+}
+
 .icon {
   display: inline-flex;
   align-items: center;

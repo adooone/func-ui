@@ -97,3 +97,20 @@
   box-shadow: inset 2px 0 0 0 var(--fui-accent);
   font-weight: 700;
 }
+
+// ─── Rounded variants ──────────────────────────────────────────
+// The popup stays at the half radius in both variants — a pill popup would
+// swallow its items — and clips their full-width hover fill to the curve.
+.full .trigger {
+  border-radius: $radius-full;
+}
+
+.half .trigger {
+  border-radius: $radius-half-sm;
+}
+
+.full .list,
+.half .list {
+  overflow: hidden;
+  border-radius: $radius-half;
+}

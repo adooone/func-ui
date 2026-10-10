@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './modal.module.scss';
 
@@ -11,6 +12,7 @@ export interface ModalProps {
   onClose: () => void;
   title?: string;
   size?: 'sm' | 'md' | 'lg';
+  rounded?: Rounded;
   children: ReactNode;
   className?: string;
 }
@@ -20,7 +22,15 @@ interface ModalSlotProps {
   className?: string;
 }
 
-function ModalRoot({ open, onClose, title, size = 'md', children, className }: ModalProps) {
+function ModalRoot({
+  open,
+  onClose,
+  title,
+  size = 'md',
+  rounded,
+  children,
+  className,
+}: ModalProps) {
   const uid = useId();
   const titleId = `fui-modal-title-${uid}`;
   const panelRef = useRef<HTMLDivElement>(null);
@@ -80,7 +90,7 @@ function ModalRoot({ open, onClose, title, size = 'md', children, className }: M
       />
       <div
         ref={panelRef}
-        className={cn(styles.panel, styles[size], className)}
+        className={cn(styles.panel, styles[size], rounded && styles[rounded], className)}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}

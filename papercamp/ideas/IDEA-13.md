@@ -41,7 +41,7 @@ The radio repo's IDEA-9 phase 3 depends on this shipping in a release
       radius; the Checkbox box goes circle on `full` and `$radius-half-xs`
       on `half`; Select's popup list rounds to the half radius in both
       variants.
-- [ ] Phase 3 — Surfaces and pickers: Modal, Chip, Stamp, Menu, SegmentedControl
+- [x] Phase 3 — Surfaces and pickers: Modal, Chip, Stamp, Menu, SegmentedControl
       Modal panel caps `full` at the surface radius and rounds its glass
       `::before` with it; Chip and Stamp go pill/half; Menu rounds the
       trigger (and its popup list to the half radius); SegmentedControl
