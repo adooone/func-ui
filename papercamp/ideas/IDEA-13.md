@@ -2,7 +2,7 @@
 id: IDEA-13
 title: Rounded pill variants across the form and surface components
 type: feat
-status: in-progress
+status: review
 created: 2026-10-10
 tags:
   - components
@@ -46,7 +46,7 @@ The radio repo's IDEA-9 phase 3 depends on this shipping in a release
       `::before` with it; Chip and Stamp go pill/half; Menu rounds the
       trigger (and its popup list to the half radius); SegmentedControl
       rounds the fieldset and clips its segments.
-- [ ] Phase 4 — Showcase entries and README note
+- [x] Phase 4 — Showcase entries and README note
       A `rounded` control (square | half | full) on the Input cluster,
       Modal, Chip, Stamp, Menu and SegmentedControl entries, mapping
       `square` to unset; one README line documenting the opt-in.

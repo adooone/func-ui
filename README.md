@@ -63,6 +63,11 @@ export default { presets: [funcPreset], content: [/* ... */] };
 
 ## Components
 
+Everything is hard-edged by default (the film aesthetic). `Input`, `Textarea`,
+`Select`, `Checkbox`, `Modal`, `Chip`, `Stamp`, `Menu` and `SegmentedControl`
+also take `rounded="full" | "half"` — the lamp family's pill and soft-square
+radii — for retro consumers; unset keeps today's square look.
+
 ### Ambient
 
 | Component | What it is |

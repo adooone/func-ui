@@ -14,4 +14,4 @@
 | IDEA-10 | Ship 0.2.0 and refresh package docs | chore | done | release, docs, papercamp |
 | IDEA-11 | Hosted showcase | docs | done | showcase, release, infra |
 | IDEA-12 | Lamp control family from mojo-ui | feat | done | components, retro, radio, release |
-| IDEA-13 | Rounded pill variants across the form and surface components | feat | in-progress | components, retro, radio, release |
+| IDEA-13 | Rounded pill variants across the form and surface components | feat | review | components, retro, radio, release |
