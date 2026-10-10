@@ -39,7 +39,7 @@ After this ships, the radio admin drops the `tabIndex={-1}` workaround in
 `widget-edit-sidebar.tsx` (tracked on the radio side).
 
 ### Phases
-- [ ] Phase 1 — asChild trigger support in Menu
+- [x] Phase 1 — asChild trigger support in Menu
       Add `asChild` to `MenuProps`; when set and the trigger is a single
       valid element, clone it with the merged ref, ARIA wiring and
       composed handlers instead of rendering the wrapper button. Broaden
