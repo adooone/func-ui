@@ -46,7 +46,7 @@ After this ships, the radio admin drops the `tabIndex={-1}` workaround in
       the trigger ref/keydown types from `HTMLButtonElement` to
       `HTMLElement` so non-button hosts focus correctly on close. Falls
       back to the wrapping path when the trigger is not a single element.
-- [ ] Phase 2 — DOM test harness and Menu trigger coverage
+- [x] Phase 2 — DOM test harness and Menu trigger coverage
       First test suite in the repo: jsdom environment plus
       @testing-library/react as devDependencies, `environment: 'jsdom'`
       and `globals: true` in vitest.config.ts. menu.test.tsx covers the
