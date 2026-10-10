@@ -35,7 +35,7 @@ The radio repo's IDEA-9 phase 3 depends on this shipping in a release
       `_tokens.scss`, a `Rounded` type in `src/types/rounded.ts` exported
       from the barrel, and LampButton's inline union and hard-coded 8px/12px
       half radii re-pointed at the shared type and tokens — no visual change.
-- [ ] Phase 2 — Form controls: Input, Textarea, Select, Checkbox
+- [x] Phase 2 — Form controls: Input, Textarea, Select, Checkbox
       `rounded` prop wired through each tsx and CSS module. Input/Select
       trigger go true pill on `full`; Textarea caps `full` at the surface
       radius; the Checkbox box goes circle on `full` and `$radius-half-xs`

@@ -64,6 +64,17 @@
   font-size: $font-size-sm;
 }
 
+// ─── Rounded variants ──────────────────────────────────────────
+// A true stadium pill collapses on a multi-line box, so "full" caps at the
+// surface radius instead.
+.full {
+  border-radius: $radius-full-surface;
+}
+
+.half {
+  border-radius: $radius-half;
+}
+
 .message {
   margin: 0;
   font-size: $font-size-sm;

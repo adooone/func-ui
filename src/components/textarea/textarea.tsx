@@ -1,4 +1,5 @@
 import { type TextareaHTMLAttributes, forwardRef, useId } from 'react';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './textarea.module.scss';
 
@@ -7,10 +8,11 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
   helperText?: string;
   error?: string;
   size?: 'sm' | 'md';
+  rounded?: Rounded;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  { label, helperText, error, size = 'md', id, className, ...props },
+  { label, helperText, error, size = 'md', rounded, id, className, ...props },
   ref,
 ) {
   const uid = useId();
@@ -29,7 +31,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
       <textarea
         ref={ref}
         id={inputId}
-        className={cn(styles.textarea, styles[size], invalid && styles.invalid)}
+        className={cn(
+          styles.textarea,
+          styles[size],
+          rounded && styles[rounded],
+          invalid && styles.invalid,
+        )}
         aria-invalid={invalid || undefined}
         aria-describedby={message != null ? messageId : undefined}
         {...props}

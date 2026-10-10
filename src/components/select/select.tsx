@@ -1,4 +1,5 @@
 import { type KeyboardEvent, forwardRef, useEffect, useId, useRef, useState } from 'react';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './select.module.scss';
 
@@ -17,6 +18,7 @@ export interface SelectProps {
   helperText?: string;
   error?: string;
   size?: 'sm' | 'md';
+  rounded?: Rounded;
   placeholder?: string;
   disabled?: boolean;
   name?: string;
@@ -35,6 +37,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
     helperText,
     error,
     size = 'md',
+    rounded,
     placeholder = 'Select…',
     disabled = false,
     name,
@@ -149,7 +152,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           {label}
         </label>
       )}
-      <div className={styles.control}>
+      <div className={cn(styles.control, rounded && styles[rounded])}>
         <button
           ref={triggerRef}
           type="button"
