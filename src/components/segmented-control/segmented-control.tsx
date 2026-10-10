@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './segmented-control.module.scss';
 
@@ -15,6 +16,7 @@ export interface SegmentedControlProps
   value: string;
   onChange: (value: string) => void;
   size?: 'sm' | 'md';
+  rounded?: Rounded;
 }
 
 export function SegmentedControl({
@@ -22,11 +24,15 @@ export function SegmentedControl({
   value,
   onChange,
   size = 'md',
+  rounded,
   className,
   ...props
 }: SegmentedControlProps) {
   return (
-    <fieldset className={cn(styles.group, styles[size], className)} {...props}>
+    <fieldset
+      className={cn(styles.group, styles[size], rounded && styles[rounded], className)}
+      {...props}
+    >
       {options.map((option) => {
         const active = option.value === value;
         return (

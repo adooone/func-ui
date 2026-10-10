@@ -141,6 +141,12 @@ const selectOptions: SelectOption[] = [
 
 type Section = (typeof sections)[number];
 
+// The rounded prop is unset by default, so the showcase control adds a
+// third "square" choice that maps back to undefined.
+type RoundedChoice = 'square' | 'half' | 'full';
+const roundedOptions = ['square', 'half', 'full'] as const;
+const roundedProp = (choice: RoundedChoice) => (choice === 'square' ? undefined : choice);
+
 function Control<T extends string>({
   label,
   options,
@@ -300,6 +306,7 @@ function Showcase() {
   const [stampVariant, setStampVariant] = useState<StampVariant>('success');
   const [stampDot, setStampDot] = useState(false);
   const [stampClicks, setStampClicks] = useState(0);
+  const [stampRounded, setStampRounded] = useState<RoundedChoice>('square');
 
   const [cardSize, setCardSize] = useState<'sm' | 'md'>('md');
   const [cardClicks, setCardClicks] = useState(0);
@@ -308,6 +315,7 @@ function Showcase() {
 
   const [fieldSize, setFieldSize] = useState<'sm' | 'md'>('md');
   const [fieldError, setFieldError] = useState(false);
+  const [fieldRounded, setFieldRounded] = useState<RoundedChoice>('square');
 
   const [selectValue, setSelectValue] = useState('');
 
@@ -318,6 +326,7 @@ function Showcase() {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSize, setModalSize] = useState<'sm' | 'md' | 'lg'>('md');
+  const [modalRounded, setModalRounded] = useState<RoundedChoice>('square');
 
   const [activeItem, setActiveItem] = useState('inbox');
 
@@ -348,11 +357,14 @@ function Showcase() {
   const [dotPulse, setDotPulse] = useState(false);
 
   const [chipFilters, setChipFilters] = useState<string[]>(['funk']);
+  const [chipRounded, setChipRounded] = useState<RoundedChoice>('square');
 
   const [menuSort, setMenuSort] = useState<'year' | 'title'>('year');
+  const [menuRounded, setMenuRounded] = useState<RoundedChoice>('square');
   const [tableState, setTableState] = useState<'data' | 'loading' | 'empty'>('data');
   const [tabsOrientation, setTabsOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
   const [segValue, setSegValue] = useState('list');
+  const [segRounded, setSegRounded] = useState<RoundedChoice>('square');
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerSide, setDrawerSide] = useState<DrawerSide>('right');
@@ -656,13 +668,27 @@ function Showcase() {
                     description="A compact status badge on the semantic status tokens. Give it onClick and it becomes a real button with hover lift — no wrapper needed."
                   >
                     <div className="flex min-h-[48px] flex-wrap items-center gap-2">
-                      <Stamp variant={stampVariant} dot={stampDot}>
+                      <Stamp
+                        variant={stampVariant}
+                        dot={stampDot}
+                        rounded={roundedProp(stampRounded)}
+                      >
                         {stampVariant}
                       </Stamp>
-                      <Stamp variant="info" dot={stampDot} size="md">
+                      <Stamp
+                        variant="info"
+                        dot={stampDot}
+                        size="md"
+                        rounded={roundedProp(stampRounded)}
+                      >
                         md size
                       </Stamp>
-                      <Stamp variant="success" dot onClick={() => setStampClicks((c) => c + 1)}>
+                      <Stamp
+                        variant="success"
+                        dot
+                        rounded={roundedProp(stampRounded)}
+                        onClick={() => setStampClicks((c) => c + 1)}
+                      >
                         {stampClicks === 0 ? 'click me' : `clicked ${stampClicks}×`}
                       </Stamp>
                     </div>
@@ -678,6 +704,12 @@ function Showcase() {
                         options={['false', 'true'] as const}
                         value={stampDot ? 'true' : 'false'}
                         onChange={(v) => setStampDot(v === 'true')}
+                      />
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={stampRounded}
+                        onChange={setStampRounded}
                       />
                     </div>
                   </Entry>
@@ -756,6 +788,7 @@ function Showcase() {
                         label="Band name"
                         placeholder="e.g. Parliament"
                         size={fieldSize}
+                        rounded={roundedProp(fieldRounded)}
                         helperText="As it appears on the sleeve."
                         error={fieldError ? 'This name is already taken.' : undefined}
                       />
@@ -773,12 +806,18 @@ function Showcase() {
                         value={fieldError ? 'true' : 'false'}
                         onChange={(v) => setFieldError(v === 'true')}
                       />
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={fieldRounded}
+                        onChange={setFieldRounded}
+                      />
                     </div>
                   </Entry>
 
                   <Entry
                     name="Textarea"
-                    description="The multi-line counterpart to Input — same label/helper/error scaffolding, sharing the size and error controls above."
+                    description="The multi-line counterpart to Input — same label/helper/error scaffolding, sharing the size, error and rounded controls above. Its full caps at the surface radius; a true pill would collapse on a tall box."
                   >
                     <div className="max-w-xs">
                       <Textarea
@@ -786,6 +825,7 @@ function Showcase() {
                         rows={3}
                         placeholder="Tell the story behind the record…"
                         size={fieldSize}
+                        rounded={roundedProp(fieldRounded)}
                         helperText="Markdown is not supported."
                         error={fieldError ? 'Liner notes are required.' : undefined}
                       />
@@ -803,6 +843,7 @@ function Showcase() {
                         value={selectValue}
                         onChange={setSelectValue}
                         size={fieldSize}
+                        rounded={roundedProp(fieldRounded)}
                         helperText="Disabled options are skipped by the keyboard."
                       />
                     </div>
@@ -817,6 +858,7 @@ function Showcase() {
                       checked={checked}
                       onChange={(e) => setChecked(e.target.checked)}
                       size={fieldSize}
+                      rounded={roundedProp(fieldRounded)}
                     />
                   </Entry>
 
@@ -883,12 +925,19 @@ function Showcase() {
                         value={modalSize}
                         onChange={setModalSize}
                       />
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={modalRounded}
+                        onChange={setModalRounded}
+                      />
                     </div>
                     <Modal
                       open={modalOpen}
                       onClose={() => setModalOpen(false)}
                       title="Confirm pressing"
                       size={modalSize}
+                      rounded={roundedProp(modalRounded)}
                     >
                       <Modal.Body>
                         <p className="opacity-80">
@@ -1228,6 +1277,7 @@ function Showcase() {
                           <Chip
                             key={o.value}
                             selected={chipFilters.includes(o.value)}
+                            rounded={roundedProp(chipRounded)}
                             icon={<Icon name="check" size={14} />}
                             onToggle={() =>
                               setChipFilters((f) =>
@@ -1241,6 +1291,14 @@ function Showcase() {
                           </Chip>
                         ))}
                     </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={chipRounded}
+                        onChange={setChipRounded}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry
@@ -1250,12 +1308,21 @@ function Showcase() {
                     <SegmentedControl
                       value={segValue}
                       onChange={setSegValue}
+                      rounded={roundedProp(segRounded)}
                       options={[
                         { value: 'list', label: 'List', icon: <Icon name="note" size={16} /> },
                         { value: 'grid', label: 'Grid', icon: <Icon name="folder" size={16} /> },
                         { value: 'flow', label: 'Flow', icon: <Icon name="shuffle" size={16} /> },
                       ]}
                     />
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={segRounded}
+                        onChange={setSegRounded}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry
@@ -1433,6 +1500,7 @@ function Showcase() {
                           Actions <Icon name="chevron-down" size={16} />
                         </span>
                       }
+                      rounded={roundedProp(menuRounded)}
                       items={[
                         {
                           label: 'Sort by year',
@@ -1458,6 +1526,14 @@ function Showcase() {
                         { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
                       ]}
                     />
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="rounded"
+                        options={roundedOptions}
+                        value={menuRounded}
+                        onChange={setMenuRounded}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry

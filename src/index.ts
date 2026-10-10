@@ -35,6 +35,8 @@ export type { LampMeterProps } from './components/lamp-meter';
 
 export type { LampSize, LampTone } from './types/lamp';
 
+export type { Rounded } from './types/rounded';
+
 export { LinkButton } from './components/link-button';
 export type { LinkButtonProps } from './components/link-button';
 

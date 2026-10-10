@@ -69,3 +69,19 @@
   display: inline-flex;
   align-items: center;
 }
+
+// ─── Rounded variants ──────────────────────────────────────────
+// overflow: hidden clips the segments' square fills to the group's corners;
+// the focus ring survives it because it already sits inset (-2px offset).
+.full,
+.half {
+  overflow: hidden;
+}
+
+.full {
+  border-radius: $radius-full;
+}
+
+.half {
+  border-radius: $radius-half-sm;
+}

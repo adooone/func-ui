@@ -91,7 +91,7 @@
   }
 
   &.half {
-    border-radius: 8px;
+    border-radius: $radius-half-sm;
   }
 
   .socket,
@@ -114,7 +114,7 @@
   }
 
   &.half {
-    border-radius: 12px;
+    border-radius: $radius-half;
   }
 
   .socket,
@@ -137,7 +137,7 @@
   }
 
   &.half {
-    border-radius: 12px;
+    border-radius: $radius-half;
   }
 
   .socket,

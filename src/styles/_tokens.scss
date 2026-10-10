@@ -44,3 +44,14 @@ $blur-glass: 50px;
 $grain-duration: 8s;
 $glass-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 $radius-md: 0px; // the film aesthetic uses hard, square edges
+
+// ─── Rounding (rounded="full" | "half") ────────────────────────
+// Opt-in pill rounding shared with the lamp family — components keep the
+// hard edges above unless a consumer asks. The half values are the ones
+// LampButton established; -full-surface stands in for the stadium pill on
+// multi-line surfaces (Textarea, Modal), where a true pill collapses.
+$radius-full: 9999px;
+$radius-full-surface: 24px;
+$radius-half: 12px;
+$radius-half-sm: 8px;
+$radius-half-xs: 4px;

@@ -80,3 +80,12 @@ button.stamp {
   padding: 0.125rem 0.5rem;
   font-size: 0.75rem;
 }
+
+// ─── Rounded variants ──────────────────────────────────────────
+.full {
+  border-radius: $radius-full;
+}
+
+.half {
+  border-radius: $radius-half-xs;
+}

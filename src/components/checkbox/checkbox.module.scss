@@ -105,6 +105,15 @@
   }
 }
 
+// ─── Rounded variants ──────────────────────────────────────────
+.full .box {
+  border-radius: $radius-full;
+}
+
+.half .box {
+  border-radius: $radius-half-xs;
+}
+
 .message {
   margin: 0;
   font-size: $font-size-sm;

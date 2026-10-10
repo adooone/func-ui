@@ -1,4 +1,5 @@
 import { type InputHTMLAttributes, forwardRef, useId } from 'react';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './checkbox.module.scss';
 
@@ -8,10 +9,11 @@ export interface CheckboxProps
   helperText?: string;
   error?: string;
   size?: 'sm' | 'md';
+  rounded?: Rounded;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  { label, helperText, error, size = 'md', id, className, disabled, ...props },
+  { label, helperText, error, size = 'md', rounded, id, className, disabled, ...props },
   ref,
 ) {
   const uid = useId();
@@ -24,7 +26,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
     <div className={cn(styles.field, className)}>
       <label
         htmlFor={inputId}
-        className={cn(styles.control, styles[size], disabled && styles.disabled)}
+        className={cn(
+          styles.control,
+          styles[size],
+          rounded && styles[rounded],
+          disabled && styles.disabled,
+        )}
       >
         <input
           ref={ref}

@@ -87,6 +87,22 @@
   font-size: $font-size-sm;
 }
 
+// ─── Rounded variants ──────────────────────────────────────────
+// The list stays at the half radius in both variants — a pill popup would
+// swallow its options. Its overflow-y: auto already clips them to the curve.
+.full .trigger {
+  border-radius: $radius-full;
+}
+
+.half .trigger {
+  border-radius: $radius-half-sm;
+}
+
+.full .list,
+.half .list {
+  border-radius: $radius-half;
+}
+
 .list {
   position: absolute;
   z-index: 20;

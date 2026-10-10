@@ -47,6 +47,24 @@
   max-width: 48rem;
 }
 
+// ─── Rounded variants ──────────────────────────────────────────
+// The glass frost lives on the panel's ::before, so it follows the curve.
+// full caps at the surface radius — a stadium collapses on a tall panel.
+.full,
+.half {
+  &::before {
+    border-radius: inherit;
+  }
+}
+
+.full {
+  border-radius: $radius-full-surface;
+}
+
+.half {
+  border-radius: $radius-half;
+}
+
 .header {
   display: flex;
   align-items: flex-start;

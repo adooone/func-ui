@@ -1,4 +1,5 @@
 import { type KeyboardEvent, type ReactNode, useEffect, useId, useRef, useState } from 'react';
+import type { Rounded } from '../../types/rounded';
 import { cn } from '../../utils/style-helpers';
 import styles from './menu.module.scss';
 
@@ -22,6 +23,7 @@ export interface MenuProps {
   items: MenuEntry[];
   triggerLabel?: string;
   align?: 'start' | 'end';
+  rounded?: Rounded;
   className?: string;
 }
 
@@ -33,7 +35,14 @@ function isSelectable(entry: MenuEntry): entry is MenuItem {
   return !isSeparator(entry) && !entry.disabled;
 }
 
-export function Menu({ trigger, items, triggerLabel, align = 'start', className }: MenuProps) {
+export function Menu({
+  trigger,
+  items,
+  triggerLabel,
+  align = 'start',
+  rounded,
+  className,
+}: MenuProps) {
   const uid = useId();
   const triggerId = `fui-menu-trigger-${uid}`;
   const menuId = `fui-menu-${uid}`;
@@ -138,7 +147,7 @@ export function Menu({ trigger, items, triggerLabel, align = 'start', className 
   };
 
   return (
-    <div ref={rootRef} className={cn(styles.menu, className)}>
+    <div ref={rootRef} className={cn(styles.menu, rounded && styles[rounded], className)}>
       <button
         ref={triggerRef}
         type="button"
