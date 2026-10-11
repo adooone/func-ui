@@ -2,8 +2,10 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    // No test suite yet — the runner is wired so checks and CI stay green,
-    // and future *.test.* files are picked up with zero further setup.
-    passWithNoTests: true,
+    environment: 'jsdom',
+    // Testing-library's auto-cleanup registers through the global
+    // afterEach hook, so globals stay on even though tests import
+    // describe/it/expect explicitly.
+    globals: true,
   },
 });

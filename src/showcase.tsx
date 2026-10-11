@@ -1425,39 +1425,55 @@ function Showcase() {
 
                   <Entry
                     name="Menu"
-                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, separators between groups, a selected state for single-choice pickers, and a danger variant."
+                    description="A dropdown menu with full keyboard nav (arrows, Home/End, type-ahead, Escape), item icons, separators between groups, a selected state for single-choice pickers, and a danger variant. With asChild the trigger element is cloned instead of wrapped, so an interactive trigger — here a LampButton — stays a single button."
                   >
-                    <Menu
-                      trigger={
-                        <span className="inline-flex items-center gap-2">
-                          Actions <Icon name="chevron-down" size={16} />
-                        </span>
-                      }
-                      items={[
-                        {
-                          label: 'Sort by year',
-                          icon: <Icon name="sort-asc" size={16} />,
-                          selected: menuSort === 'year',
-                          onSelect: () => setMenuSort('year'),
-                        },
-                        {
-                          label: 'Sort by title',
-                          icon: <Icon name="sort-desc" size={16} />,
-                          selected: menuSort === 'title',
-                          onSelect: () => setMenuSort('title'),
-                        },
-                        { separator: true },
-                        { label: 'Rename', icon: <Icon name="wand" size={16} /> },
-                        { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
-                        {
-                          label: 'Refresh',
-                          icon: <Icon name="refresh" size={16} />,
-                          disabled: true,
-                        },
-                        { separator: true },
-                        { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
-                      ]}
-                    />
+                    <div className="flex flex-wrap items-center gap-6">
+                      <Menu
+                        trigger={
+                          <span className="inline-flex items-center gap-2">
+                            Actions <Icon name="chevron-down" size={16} />
+                          </span>
+                        }
+                        items={[
+                          {
+                            label: 'Sort by year',
+                            icon: <Icon name="sort-asc" size={16} />,
+                            selected: menuSort === 'year',
+                            onSelect: () => setMenuSort('year'),
+                          },
+                          {
+                            label: 'Sort by title',
+                            icon: <Icon name="sort-desc" size={16} />,
+                            selected: menuSort === 'title',
+                            onSelect: () => setMenuSort('title'),
+                          },
+                          { separator: true },
+                          { label: 'Rename', icon: <Icon name="wand" size={16} /> },
+                          { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
+                          {
+                            label: 'Refresh',
+                            icon: <Icon name="refresh" size={16} />,
+                            disabled: true,
+                          },
+                          { separator: true },
+                          { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
+                        ]}
+                      />
+                      <Menu
+                        asChild
+                        trigger={
+                          <LampButton tone="green" size="sm">
+                            Actions
+                          </LampButton>
+                        }
+                        items={[
+                          { label: 'Rename', icon: <Icon name="wand" size={16} /> },
+                          { label: 'Duplicate', icon: <Icon name="copy" size={16} /> },
+                          { separator: true },
+                          { label: 'Delete', icon: <Icon name="close" size={16} />, danger: true },
+                        ]}
+                      />
+                    </div>
                   </Entry>
 
                   <Entry
