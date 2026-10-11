@@ -78,7 +78,8 @@
     ],
     "ci": {
       "repo": "adooone/func-ui",
-      "releasePlease": true
+      "releasePlease": true,
+      "draftPr": true
     }
   }
 }
