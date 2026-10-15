@@ -2,8 +2,9 @@
 id: IDEA-8
 title: Adopt branch-per-idea working flow
 type: chore
-status: review
+status: done
 created: 2026-08-04
+updated: 2026-10-11
 tags:
   - workflow
 ---
