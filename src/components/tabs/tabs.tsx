@@ -10,6 +10,7 @@ import { cn } from '../../utils/style-helpers';
 import styles from './tabs.module.scss';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
+export type TabsVariant = 'underline' | 'ghost';
 
 export interface TabItem {
   value: string;
@@ -27,6 +28,8 @@ export interface TabsProps
   onChange?: (value: string) => void;
   orientation?: TabsOrientation;
   size?: 'sm' | 'md';
+  /** `ghost` drops the baseline rule: bare labels, the active one underlined in accent. */
+  variant?: TabsVariant;
   activation?: 'automatic' | 'manual';
   tablistLabel?: string;
 }
@@ -38,6 +41,7 @@ export function Tabs({
   onChange,
   orientation = 'horizontal',
   size = 'md',
+  variant = 'underline',
   activation = 'automatic',
   tablistLabel,
   className,
@@ -113,7 +117,15 @@ export function Tabs({
   };
 
   return (
-    <div className={cn(styles.tabs, styles[orientation], className)} {...props}>
+    <div
+      className={cn(
+        styles.tabs,
+        styles[orientation],
+        variant === 'ghost' && styles.ghost,
+        className,
+      )}
+      {...props}
+    >
       <div
         role="tablist"
         aria-label={tablistLabel}

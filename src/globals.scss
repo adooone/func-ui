@@ -105,7 +105,11 @@
   --fui-lamp-red: radial-gradient(circle at 50% 50%, #ff5050 39%, #f99696 100%);
   --fui-lamp-red-glow: rgba(255, 80, 80, 0.5);
   --fui-lamp-red-glow-strong: rgba(192, 79, 79, 0.7);
-  --fui-lamp-dark: radial-gradient(circle at 50% 50%, #61675f 0%, #36302b 100%);
+  --fui-lamp-dark: radial-gradient(
+    circle at 50% 30%,
+    rgba(70, 66, 60, 0.45) 0%,
+    rgba(14, 12, 10, 0.7) 100%
+  );
   --fui-lamp-dark-glow: transparent;
   --fui-lamp-dark-glow-strong: transparent;
 }
@@ -138,21 +142,4 @@
   --fui-lamp-gray-glow-strong: rgba(242, 242, 242, 0.6);
   --fui-lamp-red-glow: rgba(255, 80, 80, 0.4);
   --fui-lamp-red-glow-strong: rgba(255, 80, 80, 0.6);
-}
-
-// ─── Base ──────────────────────────────────────────────────────
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: $font-family-sans;
-  line-height: 1.6;
-  background-color: var(--fui-bg);
-  color: var(--fui-text);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }

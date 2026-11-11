@@ -1,0 +1,17 @@
+@use './styles/tokens' as *;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-sans;
+  line-height: 1.6;
+  background-color: var(--fui-bg);
+  color: var(--fui-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}

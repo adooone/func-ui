@@ -41,7 +41,9 @@ $lamp-status-text: (
   @each $tone in map.keys($lamp-status-text) {
     &.#{$tone} {
       @include lamp-tone($tone);
-      box-shadow: $lamp-frosted-shadow, 0 0 8px 1px var(--fui-lamp-#{$tone}-glow);
+      box-shadow:
+        if($tone == 'dark', $lamp-smoked-shadow, $lamp-frosted-shadow),
+        0 0 8px 1px var(--fui-lamp-#{$tone}-glow);
     }
   }
 }

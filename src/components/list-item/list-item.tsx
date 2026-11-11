@@ -5,12 +5,13 @@ import styles from './list-item.module.scss';
 export interface ListItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'sm' | 'md';
   active?: boolean;
+  tone?: 'default' | 'warn' | 'alert';
   icon?: ReactNode;
   action?: ReactNode;
 }
 
 export const ListItem = forwardRef<HTMLButtonElement, ListItemProps>(function ListItem(
-  { size = 'md', active = false, icon, action, className, children, ...props },
+  { size = 'md', active = false, tone = 'default', icon, action, className, children, ...props },
   ref,
 ) {
   return (
@@ -18,7 +19,13 @@ export const ListItem = forwardRef<HTMLButtonElement, ListItemProps>(function Li
       ref={ref}
       type="button"
       aria-current={active || undefined}
-      className={cn(styles.item, styles[size], active && styles.active, className)}
+      className={cn(
+        styles.item,
+        styles[size],
+        active && styles.active,
+        tone !== 'default' && styles[tone],
+        className,
+      )}
       {...props}
     >
       {icon && <span className={styles.icon}>{icon}</span>}

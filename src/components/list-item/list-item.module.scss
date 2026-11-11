@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .item {
+  border-radius: var(--fui-radius, 0);
   display: flex;
   align-items: center;
   gap: $space-2;
@@ -37,6 +38,14 @@
   box-shadow: inset 3px 0 0 0 var(--fui-accent);
   color: var(--fui-accent);
   font-weight: 700;
+}
+
+.warn {
+  color: var(--fui-status-warning-text);
+}
+
+.alert {
+  color: var(--fui-status-error-text);
 }
 
 .icon {

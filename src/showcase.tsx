@@ -15,6 +15,7 @@ import { version } from '../package.json';
 // barrel's side-effect import, which shipped a showcase without fonts,
 // --fui-* tokens or Tailwind (IDEA-11).
 import './globals.scss';
+import './showcase.scss';
 import {
   Alert,
   Backdrop,
@@ -75,6 +76,7 @@ import type {
   SelectOption,
   StampVariant,
   StatusDotVariant,
+  TabsVariant,
   TooltipPlacement,
 } from './index';
 
@@ -290,7 +292,11 @@ function Showcase() {
   const leftRef = useRef<HTMLDivElement>(null);
   const componentsRef = useRef<HTMLElement>(null);
 
-  const [variant, setVariant] = useState<'primary' | 'secondary' | 'ghost' | 'danger'>('primary');
+  // The theme's corner tokens, switched from the Components section.
+  const [radius, setRadius] = useState<'square' | 'pill'>('square');
+  const [variant, setVariant] = useState<'primary' | 'secondary' | 'ghost' | 'danger' | 'lit'>(
+    'primary',
+  );
   const [size, setSize] = useState<'sm' | 'md'>('md');
   const [disabled, setDisabled] = useState(false);
 
@@ -320,6 +326,7 @@ function Showcase() {
   const [modalSize, setModalSize] = useState<'sm' | 'md' | 'lg'>('md');
 
   const [activeItem, setActiveItem] = useState('inbox');
+  const [itemTone, setItemTone] = useState<'default' | 'warn' | 'alert'>('default');
 
   const [alertVariant, setAlertVariant] = useState<AlertVariant>('info');
   const [alertShown, setAlertShown] = useState(true);
@@ -352,6 +359,7 @@ function Showcase() {
   const [menuSort, setMenuSort] = useState<'year' | 'title'>('year');
   const [tableState, setTableState] = useState<'data' | 'loading' | 'empty'>('data');
   const [tabsOrientation, setTabsOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+  const [tabsVariant, setTabsVariant] = useState<TabsVariant>('underline');
   const [segValue, setSegValue] = useState('list');
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -375,6 +383,12 @@ function Showcase() {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('fui-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const root = document.documentElement.style;
+    root.setProperty('--fui-radius', radius === 'pill' ? '9999px' : '0');
+    root.setProperty('--fui-radius-panel', radius === 'pill' ? '1.5rem' : '0');
+  }, [radius]);
 
   // Scrub the ½ ⇄ ⅔ layout with scroll, then snap to the nearer state on
   // release — GSAP ScrollTrigger handles both.
@@ -585,6 +599,14 @@ function Showcase() {
                   innerRef={componentsRef}
                   lead="Interactive elements built on the foundations — each theme-aware and re-skinnable through the --fui-* tokens."
                 >
+                  <div className="mb-8">
+                    <Control
+                      label="--fui-radius"
+                      options={['square', 'pill'] as const}
+                      value={radius}
+                      onChange={setRadius}
+                    />
+                  </div>
                   <Entry
                     name="Button"
                     description="A chunky, uppercase action with a hard offset shadow that snaps flush when pressed."
@@ -597,7 +619,7 @@ function Showcase() {
                     <div className="mt-4 flex flex-col gap-3">
                       <Control
                         label="variant"
-                        options={['primary', 'secondary', 'ghost', 'danger'] as const}
+                        options={['primary', 'secondary', 'ghost', 'danger', 'lit'] as const}
                         value={variant}
                         onChange={setVariant}
                       />
@@ -920,12 +942,21 @@ function Showcase() {
                           key={item.id}
                           icon={<PlusGlyph />}
                           active={activeItem === item.id}
+                          tone={itemTone}
                           action={<Stamp variant="info">12</Stamp>}
                           onClick={() => setActiveItem(item.id)}
                         >
                           {item.label}
                         </ListItem>
                       ))}
+                    </div>
+                    <div className="mt-4 flex flex-col gap-3">
+                      <Control
+                        label="tone"
+                        options={['default', 'warn', 'alert'] as const}
+                        value={itemTone}
+                        onChange={setItemTone}
+                      />
                     </div>
                   </Entry>
 
@@ -1265,6 +1296,7 @@ function Showcase() {
                     <Tabs
                       tablistLabel="Track info"
                       orientation={tabsOrientation}
+                      variant={tabsVariant}
                       defaultValue="credits"
                       items={[
                         {
@@ -1299,6 +1331,12 @@ function Showcase() {
                         options={['horizontal', 'vertical'] as const}
                         value={tabsOrientation}
                         onChange={setTabsOrientation}
+                      />
+                      <Control
+                        label="variant"
+                        options={['underline', 'ghost'] as const}
+                        value={tabsVariant}
+                        onChange={setTabsVariant}
                       />
                     </div>
                   </Entry>

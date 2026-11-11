@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .button {
+  border-radius: var(--fui-radius, 0);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +69,12 @@
 .danger {
   background-color: var(--fui-danger);
   color: #fff;
+}
+
+.lit {
+  background-color: var(--fui-status-warning-fill);
+  color: var(--fui-status-warning-text);
+  box-shadow: inset 0 0 0 2px var(--fui-status-warning-text) !important;
 }
 
 // ─── Sizes ─────────────────────────────────────────────────────

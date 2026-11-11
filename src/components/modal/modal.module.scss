@@ -20,6 +20,7 @@
 }
 
 .panel {
+  border-radius: var(--fui-radius-panel, 0);
   @include glass;
   position: relative;
   z-index: 1;

@@ -92,18 +92,22 @@
 }
 
 .panel.left {
+  border-radius: 0 var(--fui-radius-panel, 0) var(--fui-radius-panel, 0) 0;
   animation: fui-drawer-in-left 240ms ease;
 }
 
 .panel.right {
+  border-radius: var(--fui-radius-panel, 0) 0 0 var(--fui-radius-panel, 0);
   animation: fui-drawer-in-right 240ms ease;
 }
 
 .panel.top {
+  border-radius: 0 0 var(--fui-radius-panel, 0) var(--fui-radius-panel, 0);
   animation: fui-drawer-in-top 240ms ease;
 }
 
 .panel.bottom {
+  border-radius: var(--fui-radius-panel, 0) var(--fui-radius-panel, 0) 0 0;
   animation: fui-drawer-in-bottom 240ms ease;
 }
 

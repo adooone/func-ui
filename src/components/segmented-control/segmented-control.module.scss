@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .group {
+  border-radius: var(--fui-radius, 0);
   display: inline-flex;
   min-width: 0;
   margin: 0;
@@ -13,6 +14,7 @@
 }
 
 .segment {
+  border-radius: var(--fui-radius, 0);
   display: inline-flex;
   align-items: center;
   justify-content: center;

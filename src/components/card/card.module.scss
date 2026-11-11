@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .card {
+  border-radius: var(--fui-radius-panel, 0);
   display: flex;
   flex-direction: column;
   background-color: var(--fui-card-bg);

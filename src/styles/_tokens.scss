@@ -29,9 +29,9 @@ $space-6: 1.5rem;
 $space-8: 2rem;
 
 // ─── Type scale ────────────────────────────────────────────────
-$font-family-sans: 'Montserrat Alternates', sans-serif;
+$font-family-sans: var(--fui-font, 'Montserrat Alternates', sans-serif);
 $font-family-title: 'KyivType Serif', Georgia, serif;
-$font-family-mono: 'Montserrat Alternates', sans-serif;
+$font-family-mono: var(--fui-font, 'Montserrat Alternates', sans-serif);
 
 $font-size-sm: 0.875rem;
 $font-size-md: 1rem;

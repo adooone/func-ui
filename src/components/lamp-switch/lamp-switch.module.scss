@@ -60,7 +60,7 @@ $lamp-switch-tones: ('green', 'yellow', 'gray', 'red', 'dark');
   border-radius: $lamp-radius-full;
   background: var(--fui-lamp-dark);
   transition: margin 150ms ease-out;
-  @include lamp-frosted-inner;
+  @include lamp-frosted-inner($tone: 'dark');
 }
 
 .labels {

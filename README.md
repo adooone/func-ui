@@ -37,6 +37,28 @@ export default function App() {
 Toggle dark mode by adding/removing the `dark` class on `<html>` — every token
 (`--fui-*`) retints automatically.
 
+## Theme tokens
+
+Set these once on `:root` (or any wrapper) and every component follows:
+
+| Token | Read by | Default |
+| --- | --- | --- |
+| `--fui-radius` | Every control: buttons, fields, Select, Chip, Stamp, SegmentedControl, ListItem, the Menu list | `0` |
+| `--fui-radius-panel` | Modal, Card and Drawer (inner edges only) | `0` |
+| `--fui-font` | Every module's sans and mono text | Montserrat Alternates |
+
+```css
+:root {
+  --fui-radius: 9999px;
+  --fui-radius-panel: 1.5rem;
+  --fui-font: 'Inter', sans-serif;
+}
+```
+
+The stylesheet styles the components only, never the document: your app
+sets `body`'s margin, background, colour, font and line height itself
+(before 0.5.0 the library did).
+
 ## Fonts
 
 The stylesheet declares `@font-face` for Montserrat Alternates (body), KyivType
@@ -76,7 +98,7 @@ export default { presets: [funcPreset], content: [/* ... */] };
 
 | Component | What it is |
 | --- | --- |
-| `Button` | The primary action, in the offset-shadow style |
+| `Button` | The primary action, in the offset-shadow style; `lit` is the amber-outlined armed action |
 | `IconButton` | Square icon-only button |
 | `LinkButton` | An anchor that looks like a `Button` |
 | `FileButton` | A button wrapping a hidden file input (`onFiles`) |
@@ -127,11 +149,11 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | Component | What it is |
 | --- | --- |
 | `Card` | Content surface, optionally clickable |
-| `ListItem` | Dense selectable row with icon and action slots |
+| `ListItem` | Dense selectable row with icon and action slots; `tone` `warn` / `alert` |
 | `Divider` | Rule, horizontal or vertical, with an optional label |
 | `Chip` | Toggleable filter pill |
 | `SegmentedControl` | Exclusive choice between a few options |
-| `Tabs` | Tab strip plus panels, horizontal or vertical |
+| `Tabs` | Tab strip plus panels, horizontal or vertical; `ghost` for bare labels underlined in accent |
 | `Breadcrumb` | Trail of links ending in the current page |
 | `DataTable` | Typed table — `DataTableColumn<T>[]` over your rows |
 
