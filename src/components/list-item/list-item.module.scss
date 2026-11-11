@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .item {
+  border-radius: var(--fui-radius, 0);
   display: flex;
   align-items: center;
   gap: $space-2;

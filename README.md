@@ -37,6 +37,22 @@ export default function App() {
 Toggle dark mode by adding/removing the `dark` class on `<html>` — every token
 (`--fui-*`) retints automatically.
 
+## Theme tokens
+
+Set these once on `:root` (or any wrapper) and every component follows:
+
+| Token | Read by | Default |
+| --- | --- | --- |
+| `--fui-radius` | Every control: buttons, fields, Select, Chip, Stamp, SegmentedControl, ListItem, the Menu list | `0` |
+| `--fui-radius-panel` | Modal, Card and Drawer (inner edges only) | `0` |
+
+```css
+:root {
+  --fui-radius: 9999px;
+  --fui-radius-panel: 1.5rem;
+}
+```
+
 ## Fonts
 
 The stylesheet declares `@font-face` for Montserrat Alternates (body), KyivType

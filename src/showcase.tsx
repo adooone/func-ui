@@ -290,6 +290,8 @@ function Showcase() {
   const leftRef = useRef<HTMLDivElement>(null);
   const componentsRef = useRef<HTMLElement>(null);
 
+  // The theme's corner tokens, switched from the Components section.
+  const [radius, setRadius] = useState<'square' | 'pill'>('square');
   const [variant, setVariant] = useState<'primary' | 'secondary' | 'ghost' | 'danger'>('primary');
   const [size, setSize] = useState<'sm' | 'md'>('md');
   const [disabled, setDisabled] = useState(false);
@@ -375,6 +377,12 @@ function Showcase() {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('fui-theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const root = document.documentElement.style;
+    root.setProperty('--fui-radius', radius === 'pill' ? '9999px' : '0');
+    root.setProperty('--fui-radius-panel', radius === 'pill' ? '1.5rem' : '0');
+  }, [radius]);
 
   // Scrub the ½ ⇄ ⅔ layout with scroll, then snap to the nearer state on
   // release — GSAP ScrollTrigger handles both.
@@ -585,6 +593,14 @@ function Showcase() {
                   innerRef={componentsRef}
                   lead="Interactive elements built on the foundations — each theme-aware and re-skinnable through the --fui-* tokens."
                 >
+                  <div className="mb-8">
+                    <Control
+                      label="--fui-radius"
+                      options={['square', 'pill'] as const}
+                      value={radius}
+                      onChange={setRadius}
+                    />
+                  </div>
                   <Entry
                     name="Button"
                     description="A chunky, uppercase action with a hard offset shadow that snaps flush when pressed."

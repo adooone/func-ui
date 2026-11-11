@@ -25,6 +25,7 @@
 }
 
 .list {
+  border-radius: var(--fui-radius, 0);
   position: absolute;
   top: calc(100% + #{$space-1});
   z-index: 40;

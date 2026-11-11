@@ -20,6 +20,7 @@
 }
 
 .trigger {
+  border-radius: var(--fui-radius, 0);
   display: flex;
   align-items: center;
   gap: $space-2;
@@ -88,6 +89,7 @@
 }
 
 .list {
+  border-radius: var(--fui-radius, 0);
   position: absolute;
   z-index: 20;
   top: calc(100% + #{$space-1});

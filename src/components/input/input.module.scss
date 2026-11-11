@@ -16,6 +16,7 @@
 }
 
 .input {
+  border-radius: var(--fui-radius, 0);
   width: 100%;
   border: none;
   background-color: var(--fui-surface);
