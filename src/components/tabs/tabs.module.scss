@@ -113,3 +113,31 @@
 .horizontal .panel {
   padding-top: $space-4;
 }
+
+.ghost {
+  .tablist {
+    gap: $space-1;
+    box-shadow: none;
+  }
+
+  .tab {
+    border-radius: var(--fui-radius, 0);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: transparent;
+    transition:
+      opacity 160ms ease,
+      text-decoration-color 160ms ease;
+  }
+
+  .active {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: var(--fui-accent);
+    box-shadow: none;
+  }
+}

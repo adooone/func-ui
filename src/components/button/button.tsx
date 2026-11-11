@@ -3,7 +3,7 @@ import { cn } from '../../utils/style-helpers';
 import styles from './button.module.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'lit';
   size?: 'sm' | 'md';
   fullWidth?: boolean;
   /** Leading icon slot. */
@@ -17,7 +17,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /**
  * A chunky, uppercase button with the signature hard offset shadow that snaps
  * flush on press. Ghost is a shadow-outlined variant; secondary is frosted;
- * danger is for destructive actions.
+ * danger is for destructive actions; lit is the amber-outlined armed action.
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {

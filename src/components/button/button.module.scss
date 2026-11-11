@@ -71,6 +71,12 @@
   color: #fff;
 }
 
+.lit {
+  background-color: var(--fui-status-warning-fill);
+  color: var(--fui-status-warning-text);
+  box-shadow: inset 0 0 0 2px var(--fui-status-warning-text) !important;
+}
+
 // ─── Sizes ─────────────────────────────────────────────────────
 .md {
   padding: $space-2 $space-6;

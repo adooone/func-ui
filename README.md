@@ -98,7 +98,7 @@ export default { presets: [funcPreset], content: [/* ... */] };
 
 | Component | What it is |
 | --- | --- |
-| `Button` | The primary action, in the offset-shadow style |
+| `Button` | The primary action, in the offset-shadow style; `lit` is the amber-outlined armed action |
 | `IconButton` | Square icon-only button |
 | `LinkButton` | An anchor that looks like a `Button` |
 | `FileButton` | A button wrapping a hidden file input (`onFiles`) |
@@ -149,11 +149,11 @@ export default { presets: [funcPreset], content: [/* ... */] };
 | Component | What it is |
 | --- | --- |
 | `Card` | Content surface, optionally clickable |
-| `ListItem` | Dense selectable row with icon and action slots |
+| `ListItem` | Dense selectable row with icon and action slots; `tone` `warn` / `alert` |
 | `Divider` | Rule, horizontal or vertical, with an optional label |
 | `Chip` | Toggleable filter pill |
 | `SegmentedControl` | Exclusive choice between a few options |
-| `Tabs` | Tab strip plus panels, horizontal or vertical |
+| `Tabs` | Tab strip plus panels, horizontal or vertical; `ghost` for bare labels underlined in accent |
 | `Breadcrumb` | Trail of links ending in the current page |
 | `DataTable` | Typed table — `DataTableColumn<T>[]` over your rows |
 

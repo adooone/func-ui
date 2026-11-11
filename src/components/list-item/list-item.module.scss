@@ -40,6 +40,14 @@
   font-weight: 700;
 }
 
+.warn {
+  color: var(--fui-status-warning-text);
+}
+
+.alert {
+  color: var(--fui-status-error-text);
+}
+
 .icon {
   display: inline-flex;
   flex-shrink: 0;

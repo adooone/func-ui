@@ -2,7 +2,7 @@
 id: IDEA-14
 title: Theme tokens for radius and font, ghost Tabs, lit Button, ListItem tones
 type: feat
-status: in-progress
+status: review
 created: 2026-11-04
 updated: 2026-11-11
 tags:
@@ -46,6 +46,6 @@ tokens, set once, over a prop on every component. `LampButton` keeps the
       `$font-family-sans` and `$font-family-mono` read `--fui-font`;
       `globals.scss` stops styling `html` and `body`, which move to the
       showcase's own `showcase.scss`. README notes the breaking change.
-- [ ] Phase 3 — Ghost `Tabs`, lit `Button`, `ListItem` tones
+- [x] Phase 3 — Ghost `Tabs`, lit `Button`, `ListItem` tones
       The three variants, exported types, showcase controls for each and
       the README rows.
