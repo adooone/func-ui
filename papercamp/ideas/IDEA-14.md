@@ -28,6 +28,9 @@ classes from their own CSS, which is what the admin does today.
   underlined in accent.
 - `Button` gains `variant="lit"`, the amber-outlined armed action;
   `ListItem` gains `tone="warn" | "alert"`.
+- The unlit `dark` lamp tone turns from milky grey glass into dark,
+  translucent smoked glass (asked for from the radio player's settings
+  page, 2026-11-11).
 
 **Breaking:** apps that relied on the library to style `body` (margin,
 background, colour, font, line height) now set those themselves.
@@ -49,3 +52,9 @@ tokens, set once, over a prop on every component. `LampButton` keeps the
 - [x] Phase 3 — Ghost `Tabs`, lit `Button`, `ListItem` tones
       The three variants, exported types, showcase controls for each and
       the README rows.
+- [x] Phase 4 — The dark tone as smoked glass
+      The unlit `dark` lamp tone was a warm grey under a milky white
+      frost. It becomes a dark, translucent fill over a translucent socket,
+      with only a thin rim of light, in every lamp control that uses it
+      (LampButton, LampIconButton, the LampSwitch knob, LampStatus). The
+      lit tones are opaque and unchanged; LampMeter's track stays solid.
