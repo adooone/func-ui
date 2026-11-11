@@ -2,7 +2,7 @@
 id: IDEA-14
 title: Theme tokens for radius and font, ghost Tabs, lit Button, ListItem tones
 type: feat
-status: review
+status: done
 created: 2026-11-04
 updated: 2026-11-11
 tags:
