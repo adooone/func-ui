@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://github.com/adooone/func-ui/compare/v0.4.0...v0.5.0) (2026-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* the stylesheet no longer styles html or body; apps set their own margin, background, colour, font and line height.
+
+### Features
+
+* theme tokens for radius and font, ghost Tabs, lit Button, ListItem tones, smoked dark lamp (IDEA-14) ([#13](https://github.com/adooone/func-ui/issues/13)) ([6771efd](https://github.com/adooone/func-ui/commit/6771efd7dff72f3a4a0269c50add232a7e0fc030))
+
 ## [0.4.0](https://github.com/adooone/func-ui/compare/v0.3.0...v0.4.0) (2026-10-09)
 
 
