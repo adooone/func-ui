@@ -42,7 +42,7 @@ tokens, set once, over a prop on every component. `LampButton` keeps the
       Every control's module reads `var(--fui-radius, 0)`, the panels
       `var(--fui-radius-panel, 0)`. A radius switch in the showcase's
       Components section, and the tokens in the README.
-- [ ] Phase 2 — `--fui-font`, and the document left unstyled
+- [x] Phase 2 — `--fui-font`, and the document left unstyled
       `$font-family-sans` and `$font-family-mono` read `--fui-font`;
       `globals.scss` stops styling `html` and `body`, which move to the
       showcase's own `showcase.scss`. README notes the breaking change.

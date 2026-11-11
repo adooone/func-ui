@@ -45,13 +45,19 @@ Set these once on `:root` (or any wrapper) and every component follows:
 | --- | --- | --- |
 | `--fui-radius` | Every control: buttons, fields, Select, Chip, Stamp, SegmentedControl, ListItem, the Menu list | `0` |
 | `--fui-radius-panel` | Modal, Card and Drawer (inner edges only) | `0` |
+| `--fui-font` | Every module's sans and mono text | Montserrat Alternates |
 
 ```css
 :root {
   --fui-radius: 9999px;
   --fui-radius-panel: 1.5rem;
+  --fui-font: 'Inter', sans-serif;
 }
 ```
+
+The stylesheet styles the components only, never the document: your app
+sets `body`'s margin, background, colour, font and line height itself
+(before 0.5.0 the library did).
 
 ## Fonts
 

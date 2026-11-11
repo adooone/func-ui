@@ -15,6 +15,7 @@ import { version } from '../package.json';
 // barrel's side-effect import, which shipped a showcase without fonts,
 // --fui-* tokens or Tailwind (IDEA-11).
 import './globals.scss';
+import './showcase.scss';
 import {
   Alert,
   Backdrop,
